@@ -1,0 +1,12 @@
+{
+    "name": "Cookspired Development",
+	"forwardPorts": [
+		3000
+	],
+	"dockerFile": "Dockerfile",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"postCreateCommand": "cd ${input:projectName} && bundle install",
+	"remoteUser": "vscode"
+}
