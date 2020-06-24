@@ -7,6 +7,6 @@
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
-	"postCreateCommand": "cd ${input:projectName} && bundle install",
+	"postCreateCommand": "bin/setup",
 	"remoteUser": "vscode"
 }
