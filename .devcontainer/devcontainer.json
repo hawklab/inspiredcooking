@@ -11,6 +11,9 @@
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 	"extensions": [
+		"rebornix.ruby",
+		"editorconfig.editorconfig",
+		"castwide.solargraph"
 	],
 	"postStartCommand": "bin/setup",
 	"remoteUser": "vscode"
