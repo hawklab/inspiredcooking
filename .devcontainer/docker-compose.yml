@@ -1,17 +1,28 @@
 version: '3'
+
+volumes:
+  bundler:
+  mongodb:
+  node_modules:
+
 services:
   app:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
-  
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+
     volumes:
       - ..:/workspace:cached
-      - ../tmp/bundler:/usr/local/bundle:cached
+      - bundler:/usr/local/bundle
+      - node_modules:/workspace/node_modules
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-    
+
     links:
       - mongo
 
@@ -19,4 +30,4 @@ services:
     image: mongo
     restart: unless-stopped
     volumes:
-      - ../tmp/mongodb:/data/db:cached
+      - mongodb:/data/db
