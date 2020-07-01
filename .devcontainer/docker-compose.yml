@@ -10,10 +10,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    deploy:
-      resources:
-        limits:
-          cpus: '4'
 
     volumes:
       - ..:/workspace:cached
