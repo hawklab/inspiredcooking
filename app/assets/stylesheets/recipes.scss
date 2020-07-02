@@ -1,3 +1,62 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body
+{
+  // background-color: red;
+  // @use "@material/typography/mdc-typography";
+  font-family: "Roboto";
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
+
+.author {
+  font-size: 12px;
+  font-weight: 300;
+  padding-bottom: 8px;
+}
+
+.recipeTitle {
+  font-family: 'Rock Salt', cursive;
+  font-size: 34px;
+  padding-top: 8px;
+}
+
+.recipeDescription {
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+}
+
+.recipeImage {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.recipeActions {
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.alert {
+  font-size: 12px;
+}
+
+.page-footer {
+  margin-top: 100px;
+  background-color: #212121;
+}
+
+
+
