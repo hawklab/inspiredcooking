@@ -11,4 +11,20 @@ class QuantityField
     @amount = amount
     @unit = unit
   end
+
+  def +(other)
+    if unit != other.unit
+      throw "unit mismatch"
+    end
+
+    QuantityField.new(amount + other.amount, unit)
+  end
+
+  def *(factor)
+    QuantityField.new(amount * factor, unit)
+  end
+
+  def ==(other)
+    amount == other.amount && unit == other.unit
+  end
 end
