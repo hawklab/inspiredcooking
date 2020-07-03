@@ -13,4 +13,7 @@ FileUtils.chdir APP_ROOT do
   system 'sudo chown -R vscode:vscode .'
 
   system! 'bin/setup'
+
+  puts '== Start Spring Server =='
+  system 'spring server'
 end
