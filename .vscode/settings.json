@@ -10,5 +10,6 @@
     }
     },
     "ruby.format": "rubocop",
-    "solargraph.useBundler": true // use rubocop for formatting
+    "solargraph.useBundler": true, // use rubocop for formatting
+    "extensions.ignoreRecommendations": true // Stop presenting extension recommendations
 }
