@@ -12,8 +12,13 @@ FileUtils.chdir APP_ROOT do
   puts '== Fixing Ownership =='
   system 'sudo chown -R vscode:vscode .'
 
-  system! 'bin/setup'
+  puts '== Installing dependencies =='
+  system! 'gem install bundler --conservative'
+  system('bundle check') || system!('bundle install')
 
-  puts '== Start Spring Server =='
-  system 'spring server'
+  # Install JavaScript dependencies
+  system('bin/yarn')
+
+  puts '== Removing old logs and tempfiles =='
+  system 'bin/rails tmp:clear'
 end
