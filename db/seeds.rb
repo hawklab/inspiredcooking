@@ -6,7 +6,7 @@ Recipe.create({
       instructions: "Paso 1",
       ingredients: [
         {
-          name: "Harina",
+          id: "flour",
           quantity: [500, "grams"]
         }
       ]
@@ -15,7 +15,7 @@ Recipe.create({
       instructions: "Paso 2",
       ingredients: [
         {
-          name: "Harina",
+          id: "flour",
           quantity: [100, "grams"]
         }
       ]
@@ -24,13 +24,14 @@ Recipe.create({
       instructions: "Paso 3",
       ingredients: [
         {
-          name: "Azucar",
+          id: "sugar",
           quantity: [100, "grams"]
         }
       ]
     },
     {
-      instructions: "Paso 4"
+      instructions: "Paso 4",
+      ingredients: []
     }
   ]
 })
@@ -40,13 +41,16 @@ Recipe.create({
   description: "lalala",
   steps: [
     {
-      instructions: "Paso 1"
+      instructions: "Paso 1",
+      ingredients: []
     },
     {
-      instructions: "Paso 2"
+      instructions: "Paso 2",
+      ingredients: []
     },
     {
-      instructions: "Paso 3"
+      instructions: "Paso 3",
+      ingredients: []
     }
   ]
 })
