@@ -1,12 +1,13 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import
+url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700);
 body
 {
   // background-color: red;
   // @use "@material/typography/mdc-typography";
   font-family: "Roboto";
-
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -22,6 +23,12 @@ main {
   font-size: 12px;
   font-weight: 300;
   padding-bottom: 8px;
+}
+
+.authorImage {
+  height: 400px;
+  width: 40px;
+  margin-right: 10px;
 }
 
 .recipeTitle {
@@ -44,19 +51,63 @@ main {
 }
 
 .recipeActions {
-  margin-top: 8px;
-  margin-right: 8px;
+  margin-top: 30px;
+  // margin-right: 8px;
   margin-bottom: 8px;
+}
+
+.stepImage {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.stepActions {
+  margin-top: 30px;
+  // margin-right: 8px;
+}
+
+.title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5em;
+  letter-spacing: 0.08em;
+  font-weight: 300;
+  color: #F60;
+  text-shadow: 0 1px 1px #FFFFFF;
+  text-transform: uppercase;
+}
+
+.divider-1 {
+  border-bottom: 1px solid #FFF;
+  background-color: #bdbaba;
+  height: 1px;
+  margin: 0.5em 0px 1.5em;
+}
+
+.divider-1 span {
+  display: block;
+  width: 50px;
+  height: 1px;
+  background-color: #F60;
 }
 
 .alert {
   font-size: 12px;
 }
 
+.typeBody2 {
+  font-size: 14px;
+}
+
+.typeCaption {
+  font-size: 14px;
+
+}
+
 .page-footer {
   margin-top: 100px;
   background-color: #212121;
 }
+
+
 
 
 

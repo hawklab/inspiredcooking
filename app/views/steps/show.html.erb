@@ -1,0 +1,38 @@
+<div class="container">
+    <!---TODO--->
+    <h3 class="stepsTitle">Step 1</h3>
+
+    <!---Step Ingredientes--->
+    <h5 class="ingredientsTitle">Ingredients</h5>
+    <div class="divider"></div>
+
+
+    <div>
+       <table class="ingredientsTable">
+          <tbody>
+            <% @step.ingredients.each do |ingredient|%>
+            <tr>
+              <td><%=ingredient["quantity"][0].to_s + " " +  ingredient["quantity"][1].to_s+ " of " + ingredient["id"] %></td>
+            </tr>
+            <% end%>
+
+          </tbody>
+        </table>
+    </div>
+
+    <!---Step Ingredientes--->
+    <!---TODO--->
+    <h3 class="InstructionsTitle">Instructions</h3>
+    <div class="divider"></div>
+    <p class="typeBody2 instruccions"><%= @steps.instructions %></p>
+
+  <!---Step Photo--->
+  <img class="materialboxed stepImage responsive-img" width="650" src="https://argentina-travel-blog.sayhueque.com/wp-content/uploads/2015/09/papa.jpg">
+
+<!---Buttons--->
+  <div class="right-align">
+  <button class="stepActions waves-effect waves-light btn grey darken-4"><i class="material-icons left">check</i>Done</button>
+  <p class="typeCaption">And show me next step!</p>
+  </div>
+</div>
+

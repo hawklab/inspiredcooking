@@ -1,6 +1,6 @@
 Recipe.create({
   name: "Guatitas a la Jardinera",
-  description: "lalala",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   steps: [
     {
       instructions: "Paso 1",
@@ -38,7 +38,7 @@ Recipe.create({
 
 Recipe.create({
   name: "Pollo Arverjado",
-  description: "lalala",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   steps: [
     {
       instructions: "Paso 1",

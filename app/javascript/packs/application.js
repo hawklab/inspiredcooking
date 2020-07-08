@@ -13,3 +13,23 @@ require("turbolinks").start()
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+// $('.carousel.carousel-slider').carousel({
+//   fullWidth: true
+// });
+
+// var instance = M.Carousel.init({
+//   fullWidth: true
+// });
+
+
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true
+  });
+
+  $('.materialboxed').materialbox();
+});
+
