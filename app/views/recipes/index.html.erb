@@ -1,7 +1,7 @@
 
 <div class="container">
 <div class="row">
-      <% @recipes.each do |recipe|%>
+    <% @recipes.each do |recipe|%>
     <div class="col s12 m6 l4">
       <div class="card">
         <div class="card-image">
@@ -9,9 +9,6 @@
           <%= link_to recipe, class: "btn-floating halfway-fab waves-effect waves-light black" do %>
           <i class="material-icons">arrow_forward</i>
           <% end %>
-
-
-
         </div>
         <div class="card-content">
         <span class="recipeTitle"><%= recipe.name %></span>
