@@ -54,3 +54,22 @@ Recipe.create({
     }
   ]
 })
+
+Recipe.create({
+  name: "Keto Blueberry Muffins",
+  description: "Mornings are busy in our house, so I love to have grab and go options on hand! These keto-friendly blueberry muffins are delish, and perfect for a quick and easy breakfast!",
+  steps: [
+    {
+      instructions: "Paso 1",
+      ingredients: []
+    },
+    {
+      instructions: "Paso 2",
+      ingredients: []
+    },
+    {
+      instructions: "Paso 3",
+      ingredients: []
+    }
+  ]
+})

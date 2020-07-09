@@ -1,26 +1,22 @@
 
 <div class="container">
-<div class="row">
-    <% @recipes.each do |recipe|%>
-    <div class="col s12 m6 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="https://argentina-travel-blog.sayhueque.com/wp-content/uploads/2015/09/papa.jpg">
-          <%= link_to recipe, class: "btn-floating halfway-fab waves-effect waves-light black" do %>
-          <i class="material-icons">arrow_forward</i>
-          <% end %>
-        </div>
-        <div class="card-content">
-        <span class="recipeTitle"><%= recipe.name %></span>
-        <p class="recipeDescription"><%= recipe.description %></p>
+  <div class="row">
+      <% @recipes.each do |recipe|%>
+      <div class="col s12 m6 l4">
+        <div class="card">
+          <div class="card-image">
+            <img src="https://argentina-travel-blog.sayhueque.com/wp-content/uploads/2015/09/papa.jpg">
+            <%= link_to recipe, class: "btn-floating halfway-fab waves-effect waves-light black" do %>
+            <i class="material-icons">arrow_forward</i>
+            <% end %>
+          </div>
+          <div class="card-content">
+          <span class="recipeTitle"><%= recipe.name %></span>
+          <p class="recipeDescription"><%= recipe.description %></p>
+          </div>
         </div>
       </div>
-    </div>
       <% end %>
-
-
-
-    </div>
   </div>
-  </div>
+</div>
 

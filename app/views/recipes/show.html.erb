@@ -2,25 +2,13 @@
 
   <!---Recipes Name--->
   <div>
-  <h4 class="title"><%= @recipe.name %></h4>
+  <h4 class="recipeTitle"><%= @recipe.name %></h4>
   <div class="divider"></div>
   </div>
-
 
   <!---Recipes Author--->
   <!--TODO -->
   <h6 class="author"><img class="authorImage circle responsive-img" src="https://cdn-images-1.medium.com/fit/c/200/200/1*fmti2-FyGmZK-DGAHfMlkg.jpeg">By Carito</h4>
-  <%# <img class="responsive-img" src="cool_pic.jpg"> %>
-  <%# <div class="row valign-wrapper">
-            <div class="col s2">
-              <img src="https://cdn-images-1.medium.com/fit/c/200/200/1*fmti2-FyGmZK-DGAHfMlkg.jpeg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-            </div>
-            <div class="col s3">
-              <span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
-              </span>
-            </div>
-          </div> %>
 
   <!---Recipes Description--->
   <h6 class="recipeDescription"><%= @recipe.description %></h6>
@@ -36,8 +24,8 @@
   <!---Recipes Ingredientes--->
   <h5 class="ingredientsTitle">Ingredients</h5>
   <div class="divider"></div>
-
-      <table>
+  <div class="ingredientsList">
+    <table>
         <tbody>
           <% @recipe.steps.each do |step|%>
             <% step.ingredients.each do |ingredient|%>
@@ -48,7 +36,7 @@
            <% end %>
         </tbody>
       </table>
-
+  </div>
 
   <!---Buttons--->
   <div class="recipeActions right-align">
