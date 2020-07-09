@@ -74,6 +74,18 @@ main {
 
 /* ---------------- Step Show ----------- */
 
+.guideText {
+  font-size: 14px;
+}
+
+.stepIngredients {
+  margin-top: 20px;
+}
+
+.stepInstructions {
+  margin-top: 40px;
+}
+
 .stepImage {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -83,17 +95,16 @@ main {
   // margin-right: 8px;
 }
 
+.guideText {
+  font-size: 14px;
+}
+
 .alert {
   font-size: 12px;
 }
 
 .typeBody2 {
   font-size: 14px;
-}
-
-.typeCaption {
-  font-size: 14px;
-
 }
 
 .page-footer {
