@@ -5,6 +5,11 @@ class Recipe
   field :name, type: String
   field :description, type: String
   field :photo, type: String
+  field :preptime, type: String
+  field :cooktime, type: String
+  field :servings, type: String
+  field :difficulty, type: String
+  field :cuisine, type: String
 
   embeds_many :steps
 end
