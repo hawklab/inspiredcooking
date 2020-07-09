@@ -8,10 +8,23 @@
 
   <!---Recipes Author--->
   <!--TODO -->
-  <h6 class="author"><img class="authorImage circle responsive-img" src="https://cdn-images-1.medium.com/fit/c/200/200/1*fmti2-FyGmZK-DGAHfMlkg.jpeg">By Carito</h4>
+  <%# <div class="row authorInfo">
+    <div class="col 2"><img class="authorImage circle responsive-img" src="https://cdn-images-1.medium.com/fit/c/200/200/1*fmti2-FyGmZK-DGAHfMlkg.jpeg"></div>
+    <div class="author col 2"><p>by Carito</p></div>
+  </div> %>
+  <%# <h6 class="author"><img class="authorImage circle responsive-img" src="https://cdn-images-1.medium.com/fit/c/200/200/1*fmti2-FyGmZK-DGAHfMlkg.jpeg">By Carito</h4> %>
 
   <!---Recipes Description--->
   <h6 class="recipeDescription"><%= @recipe.description %></h6>
+  <div class="divider"></div>
+
+  <div class="recipeDetails row">
+    <div class="col s6 m4 l2"><p><%= "Prep Time: " + @recipe.preptime %></p></div>
+    <div class="col s6 m4 l2"><p><%= "Cook Time: " + @recipe.cooktime %></p></div>
+    <div class="col s6 m4 l2"><p>Easy</p></div>
+    <div class="col s6 m4 l2"><p><%= "Cuisine: " + @recipe.cuisine %></p></div>
+    <div class="col s6 m4 l2"><p><%= "Servings: " + @recipe.servings %></p></div>
+  </div>
 
   <!---Recipes Photo--->
   <div class="carousel carousel-slider">
@@ -40,13 +53,16 @@
 
   <!---Buttons--->
   <div class="recipeActions right-align">
-  <button class=" waves-effect waves-light btn grey darken-4">
-    <%= link_to recipe_step_path(@recipe, 1) do %>
-    <i class="material-icons left">local_dining</i>Make it
-    <% end %>
-  </button>
+    <button class="waves-effect waves-light btn grey darken-4 rigth-align"><i class="material-icons left">share</i>Share</button>
 
-  <button class="waves-effect waves-light btn grey darken-4 rigth-align"><i class="material-icons left">favorite</i>Add to favorites</button>
+    <button class="waves-effect waves-light btn grey darken-4 rigth-align">
+      <%= link_to recipe_step_path(@recipe, 1) do %>
+      <i class="material-icons left">local_dining</i>Make it
+      <% end %>
+    </button>
+
+    <button class="waves-effect waves-light btn grey darken-4 rigth-align"><i class="material-icons left">favorite</i>Add to favorites</button>
+
   </div>
 
 </div>
