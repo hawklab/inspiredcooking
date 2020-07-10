@@ -31,8 +31,24 @@
 
 <!---Buttons--->
   <div class="right-align">
-  <button class="stepActions waves-effect waves-light btn grey darken-4"><i class="material-icons left">check</i>Done</button>
-  <p class="guideText">And show me next step!</p>
+    <% if @step_number < @recipe.steps.count%>
+    <button class="stepActions waves-effect waves-light btn grey darken-4">
+        <%= link_to recipe_step_path(@recipe, @step_number +1 ) do %>
+        <i class="material-icons left">check</i>Done
+        <% end %>
+    </button>
+    <% end %>
+    <p class="guideText">And show me next step!</p>
+
+    <% if @step_number > 1%>
+    <button class="stepActions waves-effect waves-light btn grey darken-4">
+        <%= link_to recipe_step_path(@recipe, @step_number -1 ) do %>
+        <i class="material-icons left">arrow_back</i>Back
+        <% end %>
+    </button>
+    <% end %>
   </div>
 </div>
+
+
 
