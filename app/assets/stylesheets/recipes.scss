@@ -3,11 +3,13 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import
 url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700);
+@import
+url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;700&display=swap');
 body
 {
   // background-color: red;
   // @use "@material/typography/mdc-typography";
-  font-family: "Roboto";
+  font-family: 'Poppins', sans-serif;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -18,29 +20,15 @@ main {
 }
 
 
-
-.author {
-  font-size: 12px;
-  font-weight: 300;
-  padding-bottom: 8px;
-}
-
-.authorImage {
-  height: 400px;
-  width: 40px;
-  margin-right: 10px;
-}
-
 .recipeTitle {
-  font-family: 'Rock Salt', cursive;
+  font-weight: 700;
   font-size: 34px;
   padding-top: 8px;
 }
 
 .recipeDescription {
   font-size: 16px;
-  font-weight: 400;
-  padding-top: 8px;
+  font-weight: 300;
   padding-bottom: 8px;
 
 }
@@ -50,10 +38,52 @@ main {
   padding-bottom: 8px;
 }
 
+/* ---------------- Recipe Show ----------- */
+.authorInfo {
+  padding-top: 10px;
+}
+
+.author {
+  font-size: 12px;
+  font-weight: 300;
+
+
+}
+
+.authorImage {
+  height: 30px;
+  width: 30px;
+}
+
+.recipeDetails {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 5px;
+}
+
+.ingredientsList {
+  font-weight: 300;
+
+}
+
 .recipeActions {
   margin-top: 30px;
-  // margin-right: 8px;
   margin-bottom: 8px;
+}
+
+
+/* ---------------- Step Show ----------- */
+
+.guideText {
+  font-size: 14px;
+}
+
+.stepIngredients {
+  margin-top: 20px;
+}
+
+.stepInstructions {
+  margin-top: 40px;
 }
 
 .stepImage {
@@ -65,28 +95,8 @@ main {
   // margin-right: 8px;
 }
 
-.title {
-  font-family: 'Roboto Slab', serif;
-  font-size: 1.5em;
-  letter-spacing: 0.08em;
-  font-weight: 300;
-  color: #F60;
-  text-shadow: 0 1px 1px #FFFFFF;
-  text-transform: uppercase;
-}
-
-.divider-1 {
-  border-bottom: 1px solid #FFF;
-  background-color: #bdbaba;
-  height: 1px;
-  margin: 0.5em 0px 1.5em;
-}
-
-.divider-1 span {
-  display: block;
-  width: 50px;
-  height: 1px;
-  background-color: #F60;
+.guideText {
+  font-size: 14px;
 }
 
 .alert {
@@ -95,11 +105,6 @@ main {
 
 .typeBody2 {
   font-size: 14px;
-}
-
-.typeCaption {
-  font-size: 14px;
-
 }
 
 .page-footer {

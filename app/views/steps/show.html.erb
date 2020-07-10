@@ -1,11 +1,12 @@
 <div class="container">
     <!---TODO--->
-    <h3 class="stepsTitle">Step 1</h3>
-
-    <!---Step Ingredientes--->
-    <h5 class="ingredientsTitle">Ingredients</h5>
+    <h4 class="stepsTitle">Step 1: Prepare Dough</h4>
     <div class="divider"></div>
 
+    <!---Step Ingredients--->
+    <div class="row stepIngredients"></div>
+    <h5 class="ingredientsTitle">Ingredients</h5>
+    <p class="guideText">For this step you'll using the next ingredients:</p>
 
     <div>
        <table class="ingredientsTable">
@@ -20,19 +21,18 @@
         </table>
     </div>
 
-    <!---Step Ingredientes--->
-    <!---TODO--->
-    <h3 class="InstructionsTitle">Instructions</h3>
-    <div class="divider"></div>
-    <p class="typeBody2 instruccions"><%= @steps.instructions %></p>
-
-  <!---Step Photo--->
-  <img class="materialboxed stepImage responsive-img" width="650" src="https://argentina-travel-blog.sayhueque.com/wp-content/uploads/2015/09/papa.jpg">
+    <!---Step Instructions--->
+    <div class="row stepInstructions">
+      <h5 class="InstructionsTitle">Instructions</h5>
+      <p class="typeBody2"><%= @step.instructions %></p>
+      <!---Step Photo--->
+      <img class="materialboxed stepImage responsive-img" width="650" src="https://argentina-travel-blog.sayhueque.com/wp-content/uploads/2015/09/papa.jpg">
+    </div>
 
 <!---Buttons--->
   <div class="right-align">
   <button class="stepActions waves-effect waves-light btn grey darken-4"><i class="material-icons left">check</i>Done</button>
-  <p class="typeCaption">And show me next step!</p>
+  <p class="guideText">And show me next step!</p>
   </div>
 </div>
 
