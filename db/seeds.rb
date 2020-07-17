@@ -37,7 +37,7 @@ Recipe.create({
       ingredients: []
     }
   ],
-  cuisine: "French"
+  cuisines: ["french"]
 })
 
 Recipe.create({
@@ -60,7 +60,7 @@ Recipe.create({
       ingredients: []
     }
   ],
-  cuisine: "Chilean"
+  cuisines: ["chilean"]
 })
 
 Recipe.create({
@@ -97,6 +97,5 @@ Recipe.create({
       ingredients: []
     }
   ],
-  cuisine: "German"
+  cuisines: ["german"]
 })
-
