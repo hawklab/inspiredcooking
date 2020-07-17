@@ -45,7 +45,7 @@
               <tr>
                 <td><%=ingredient["quantity"][0].to_s + " " +  ingredient["quantity"][1].to_s+ " of " + ingredient["id"] %></td>
               </tr>
-            <% end%>
+            <% end unless step.ingredients.nil? %>
            <% end %>
         </tbody>
       </table>
