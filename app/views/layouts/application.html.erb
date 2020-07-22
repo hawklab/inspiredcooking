@@ -37,7 +37,7 @@
           <ul class="right hide-on-med-and-down">
             <!--Home--->
             <li><a href="#">Home</a></li>
-
+            <!--User--->
             <% if user_signed_in? %>
                 <%# Welcome <%=  current_user.email %>
                 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
