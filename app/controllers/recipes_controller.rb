@@ -8,4 +8,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def favorite
+    @recipe = Recipe.find(params[:id])
+    @recipe.favorited_by = [current_user]
+    redirect_to recipe_path(@recipe), notice:"You just add this recipe to your favorites"
+  end
+
+
+
 end
