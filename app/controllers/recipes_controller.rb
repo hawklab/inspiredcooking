@@ -14,6 +14,13 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(@recipe), notice:"You just add this recipe to your favorites"
   end
 
+  def unfavorite
+    @recipe = Recipe.find(params[:id])
+    @recipe.favorited_by = []
+    redirect_to recipe_path(@recipe), notice:"unfavorite"
+
+  end
+
 
 
 end

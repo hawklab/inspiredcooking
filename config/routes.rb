@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :steps
     member do
-      get 'favorite'
+      post 'favorite'
+      delete 'favorite', action: "unfavorite"
     end
   end
 

@@ -61,7 +61,15 @@
       <% end %>
     </button>
     <!---Add to favorites--->
-    <a href="<%=favorite_recipe_path(@recipe)%>" class="waves-effect waves-light btn grey darken-4 rigth-align"><i class="material-icons left">favorite</i>Add to favorites</a>
+    <% if current_user.has_favorited? @recipe %>
+      <%= link_to favorite_recipe_path(@recipe), method: :delete, class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
+      <i class="material-icons left">favorite</i>Remove from favorites
+    <% end %>
+    <% else %>
+    <%= link_to favorite_recipe_path(@recipe), method: :post, class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
+      <i class="material-icons left">favorite</i>Add to favorites
+    <% end %>
+    <% end %>
 
   </div>
 
