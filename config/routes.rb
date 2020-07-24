@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  resources :movies
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
   resources :recipes do
     resources :steps
   end
+
+  resources :users
 
   root to: "recipes#index"
 

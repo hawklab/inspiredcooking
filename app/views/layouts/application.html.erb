@@ -35,30 +35,27 @@
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
           <ul class="right hide-on-med-and-down">
+            <!--Home--->
             <li><a href="#">Home</a></li>
-
+            <!--User--->
             <% if user_signed_in? %>
                 <%# Welcome <%=  current_user.email %>
                 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
                 <li><a href="#">Create</a></li>
             <% else %>
-                <li><%= link_to "Sign in", new_user_session_path%> or <%= link_to "Sign up", new_user_registration_path %></li>
+                <!--Sing in--->
+                <li><%= link_to "Sign in", new_user_session_path%></li>
+                <!--Sing up--->
+                <li>or</li>
+                <li><%= link_to "Sign up", new_user_registration_path %></li>
             <% end %>
-            <li>
-              <form>
-                <div class="input-field">
-                  <input id="search" type="search" required>
-                  <label class="label-icon grey darken-4" for="search"><i class="material-icons grey darken-4">search</i></label>
-                  <i class="material-icons">close</i>
-                </div>
-              </form>
-            </li>
           </ul>
         </div>
     </nav>
 
     <nav>
         <div class="nav-wrapper">
+          <!--Search--->
           <form>
             <div class="input-field grey lighten-5">
               <input id="search" type="search" required>
@@ -75,21 +72,10 @@
         <li><a href="#">Search</a></li>
       </ul>
 
-
-
-
-
-
-
     <%= yield %>
-
-
 
     <header></header>
     <main></main>
-
-
-
     <%# <footer class="page-footer">
           <div class="container">
             <div class="row">
@@ -115,8 +101,6 @@
             </div>
           </div>
     </footer> %>
-
   </body>
-
 </html>
 
