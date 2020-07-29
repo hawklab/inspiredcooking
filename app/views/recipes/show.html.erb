@@ -76,16 +76,15 @@
       <% end %>
     </div>
 
-
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
-      <div class="modal-content">
+      <div class="modal-content left-align">
         <h4>Share Recipe</h4>
-        <p>"URL:"</p>
-        <%= recipe_url %>
-        <button data-copy="<%= recipe_url %>" class="action-copy">
-        copy
-        </button>
+          <div class="row">
+              <div class="col 8"><p>URL: <%= recipe_url %> </p></div>
+              <div class="col 4"><a data-copy="<%= recipe_url %>" class="action-copy waves-effect waves-light btn grey darken-4 rigth-align"><i class="material-icons left">content_copy</i>Copy</a></div>
+          </div>
+
       </div>
       <%# TODO%>
     <div class="modal-footer">
