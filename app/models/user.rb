@@ -36,4 +36,12 @@ class User
   include Mongoid::Timestamps
 
   field :name, type: String
+
+  has_and_belongs_to_many :favorite_recipes, class_name: 'Recipe', inverse_of: :favorited_by
+
+  def has_favorited?(recipe)
+    favorite_recipe_ids.include? recipe.id
+  end
+
+
 end

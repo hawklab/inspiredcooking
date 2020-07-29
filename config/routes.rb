@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   }
   resources :recipes do
     resources :steps
+    member do
+      post 'favorite'
+      delete 'favorite', action: "unfavorite"
+    end
   end
 
   resources :users

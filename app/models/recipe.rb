@@ -15,4 +15,6 @@ class Recipe
   slug :name, history: true
 
   embeds_many :steps
+  has_and_belongs_to_many :favorited_by, class_name: 'User', inverse_of: :favorite_recipes
+
 end

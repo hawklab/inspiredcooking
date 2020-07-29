@@ -72,6 +72,14 @@
         <li><a href="#">Search</a></li>
       </ul>
 
+
+    <% if notice %>
+      <div class="container">
+      <%# TODO We need to review this to avoid xss attacks %>
+          <p id="notice"><%= notice.html_safe %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
 
     <header></header>
