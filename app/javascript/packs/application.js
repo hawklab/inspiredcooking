@@ -5,6 +5,7 @@
 
 require("@rails/ujs").start()
 require("turbolinks").start()
+const copy = require('clipboard-copy')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -33,6 +34,10 @@ $(document).ready(function(){
   $('.materialboxed').materialbox();
 
   $('.modal').modal();
-  
+
+  $(".action-copy").click(function(){
+    copy($(this).data("copy"));
+  });
+
 });
 
