@@ -54,41 +54,42 @@
 
   <!---Buttons--->
   <div class="recipeActions right-align">
-    <button class="waves-effect waves-light btn grey darken-4 rigth-align"><i class="material-icons left">share</i>Share</button>
+    <div class="row">
+     <!---Share--->
+    <!-- Modal Trigger -->
+      <a class="waves-effect waves-light btn grey darken-4 rigth-align modal-trigger" href="#modal1"><i class="material-icons left">share</i>Share</a>
 
-    <button class="waves-effect waves-light btn grey darken-4 rigth-align">
-      <%= link_to recipe_step_path(@recipe, 1) do %>
+    <!---Make it--->
+      <%= link_to recipe_step_path(@recipe, 1), class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
       <i class="material-icons left">local_dining</i>Make it
       <% end %>
-    </button>
+
     <!---Add to favorites--->
-    <% if user_signed_in? && current_user.has_favorited?(@recipe)  %>
-      <%= link_to favorite_recipe_path(@recipe), method: :delete, class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
-        <i class="material-icons left">favorite</i>Remove from favorites
+      <% if user_signed_in? && current_user.has_favorited?(@recipe)  %>
+        <%= link_to favorite_recipe_path(@recipe), method: :delete, class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
+          <i class="material-icons left">favorite</i>Remove from favorites
+         <% end %>
+      <% else %>
+        <%= link_to favorite_recipe_path(@recipe), method: :post, class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
+          <i class="material-icons left">favorite</i>Add to favorites
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to favorite_recipe_path(@recipe), method: :post, class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
-        <i class="material-icons left">favorite</i>Add to favorites
-      <% end %>
-    <% end %>
-
-  </div>
-
-  <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">share</i>Share</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Share Recipe</h4>
-      <p>"URL:"</p>
-      <%= recipe_url %>
-
-      <%# TODO%>
     </div>
+
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Share Recipe</h4>
+        <p>"URL:"</p>
+        <%= recipe_url %>
+      </div>
+      <%# TODO%>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
+
+
   </div>
 
 
