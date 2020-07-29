@@ -23,7 +23,7 @@
     <div class="col s6 m4 l2"><p><%= "Cook Time: " + @recipe.cooktime %></p></div>
     <div class="col s6 m4 l2"><p><%= "Cook Time: " + @recipe.cooktime %></p></div>
     <div class="col s6 m4 l2"><p><%= "Difficulty: " + "Easy" %></p></div>
-    <div class="col s6 m4 l2"><p><%= "Cuisine: " + @recipe.cuisine %></p></div>
+    <div class="col s6 m4 l2"><p><%= "Cuisine: " + @recipe.cuisines.to_a.to_sentence %></p></div>
     <div class="col s6 m4 l2"><p><%= "Servings: " + @recipe.servings %></p></div>
   </div>
 
@@ -46,7 +46,7 @@
               <tr>
                 <td><%=ingredient["quantity"][0].to_s + " " +  ingredient["quantity"][1].to_s+ " of " + ingredient["id"] %></td>
               </tr>
-            <% end%>
+            <% end unless step.ingredients.nil? %>
            <% end %>
         </tbody>
       </table>
