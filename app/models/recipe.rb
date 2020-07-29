@@ -10,8 +10,7 @@ class Recipe
   field :cooktime, type: String
   field :servings, type: String
   field :difficulty, type: String
-  field :cuisine, type: String
-
+  field :cuisines, type: Set
 
   slug :name, history: true
 
