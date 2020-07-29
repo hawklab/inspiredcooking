@@ -25,7 +25,6 @@ const copy = require('clipboard-copy')
 
 
 $(document).ready(function(){
-  $('.sidenav').sidenav();
 
   $('.carousel.carousel-slider').carousel({
     fullWidth: true
@@ -33,11 +32,27 @@ $(document).ready(function(){
 
   $('.materialboxed').materialbox();
 
-  $('.modal').modal();
+
 
   $(".action-copy").click(function(){
     copy($(this).data("copy"));
   });
 
 });
+
+$(document).on('turbolinks:load', function(){
+  $('.sidenav').sidenav()
+  // https://github.com/mkhairi/materialize-sass/issues/162#issuecomment-375530286
+  M.Modal._count = 0;
+  $('.modal').modal();
+})
+
+$(document).on('turbolinks:before-cache', function(){
+  sidenav = $('.sidenav')
+  sidenavInstance = M.Sidenav.getInstance(sidenav)
+  sidenavInstance.destroy()
+})
+
+
+
 
