@@ -26,11 +26,15 @@ main {
   padding-top: 8px;
 }
 
-.recipeDescription {
+.recipeResume {
   font-size: 16px;
   font-weight: 300;
   padding-bottom: 8px;
 
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .recipeImage {
@@ -53,6 +57,13 @@ main {
   width: 30px;
 }
 
+.recipeDescription {
+  font-size: 16px;
+  font-weight: 300;
+  padding-bottom: 8px;
+  padding-top: 12px;
+}
+
 .recipeDetails {
   font-size: 12px;
   font-weight: 400;
@@ -62,12 +73,13 @@ main {
 
 .ingredientsList {
   font-weight: 300;
-
+  margin-bottom: 30px;
 }
 
 .recipeActions {
-  margin-top: 30px;
+  // margin-top: 10px;
   margin-bottom: 8px;
+  margin-right: 5px;;
 }
 
 .action-copy {
@@ -164,6 +176,9 @@ main {
 a {
   color: #212121; }
 
+.btn a {
+    color: #ffffff; }
+
 
 // a:visited {
 //   color: #666;
@@ -188,6 +203,10 @@ a {
   padding: 10px;
   background-color: #f1f8e9;
   border-radius: 3px;
+}
+
+#notice a {
+  color:#00bcd4;
 }
 
   // #error_explanation {

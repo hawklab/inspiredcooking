@@ -3,7 +3,7 @@
   <!---Recipes Name--->
   <div>
   <h4 class="recipeTitle"><%= @recipe.name %></h4>
-  <div class="divider"></div>
+  <%# <div class="divider"></div> %>
   </div>
 
   <!---Recipes Author--->
@@ -37,7 +37,7 @@
 
   <!---Recipes Ingredientes--->
   <h5 class="ingredientsTitle">Ingredients</h5>
-  <div class="divider"></div>
+  <%# <div class="divider"></div> %>
   <div class="ingredientsList">
     <table>
         <tbody>
@@ -53,24 +53,25 @@
   </div>
 
   <!---Buttons--->
-  <div class="recipeActions right-align">
-    <div class="row">
+  <div class="right-align">
+    <div class="row right-align">
+
      <!---Share--->
     <!-- Modal Trigger -->
-      <a class="waves-effect waves-light btn grey darken-4 rigth-align modal-trigger" href="#modal1"><i class="material-icons left">share</i>Share</a>
+      <a class="recipeActions col s12 m3 l3 waves-effect waves-light btn grey darken-4 rigth-align recipe-btn modal-trigger" href="#modal1"><i class="material-icons left">share</i>Share</a>
 
     <!---Make it--->
-      <%= link_to recipe_step_path(@recipe, 1), class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
+      <%= link_to recipe_step_path(@recipe, 1), class: "recipeActions col s12 m3 l3 waves-effect waves-light btn grey darken-4 rigth-align" do %>
       <i class="material-icons left">local_dining</i>Make it
       <% end %>
 
     <!---Add to favorites--->
       <% if user_signed_in? && current_user.has_favorited?(@recipe)  %>
-        <%= link_to favorite_recipe_path(@recipe), method: :delete, class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
+        <%= link_to favorite_recipe_path(@recipe), method: :delete, class: "recipeActions col s12 m3 l3 waves-effect waves-light btn grey darken-4 rigth-align" do %>
           <i class="material-icons left">favorite</i>Remove from favorites
          <% end %>
       <% else %>
-        <%= link_to favorite_recipe_path(@recipe), method: :post, class: "waves-effect waves-light btn grey darken-4 rigth-align" do %>
+        <%= link_to favorite_recipe_path(@recipe), method: :post, class: "recipeActions col s12 m3 l3 waves-effect waves-light btn grey darken-4 rigth-align" do %>
           <i class="material-icons left">favorite</i>Add to favorites
         <% end %>
       <% end %>
