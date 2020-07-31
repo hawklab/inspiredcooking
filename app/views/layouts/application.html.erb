@@ -75,7 +75,7 @@
         <% if user_signed_in? %>
                 <%# Welcome <%=  current_user.email %>
                 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-                <li><a href="#">Create</a></li>
+                <%# <li><a href="#">Create</a></li> %>
             <% else %>
                 <!--Sing in--->
                 <li><%= link_to "Sign in", new_user_session_path%></li>
