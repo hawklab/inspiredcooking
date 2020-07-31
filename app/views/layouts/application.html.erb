@@ -31,12 +31,12 @@
   	<!--Nav Bar--->
     <nav>
         <div class="nav-wrapper grey darken-4">
-          <a href="#!" class="brand-logo center">COOK INSPIRED</a>
+          <%= link_to "COOK INSPIRED", root_path, :class => "brand-logo center"%>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
           <ul class="right hide-on-med-and-down">
             <!--Home--->
-            <li><a href="#">Home</a></li>
+            <li><%= link_to "Home", root_path %></li>
             <!--User--->
             <% if user_signed_in? %>
                 <%# Welcome <%=  current_user.email %>
@@ -67,9 +67,21 @@
     </nav>
 
       <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Create</a></li>
-        <li><a href="#">Search</a></li>
+        <!--Home--->
+        <li><li><%= link_to "Home", root_path %></li></li>
+        <%# <li><a href="#">Create</a></li> %>
+        <%# <li><a href="#">Search</a></li> %>
+        <!--User--->
+        <% if user_signed_in? %>
+                <%# Welcome <%=  current_user.email %>
+                <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+                <li><a href="#">Create</a></li>
+            <% else %>
+                <!--Sing in--->
+                <li><%= link_to "Sign in", new_user_session_path%></li>
+                <!--Sing up--->
+                <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <% end %>
       </ul>
 
 
