@@ -1,6 +1,6 @@
 <div class="container">
     <!---TODO--->
-    <h4 class="stepsTitle">Step 1: Prepare Dough</h4>
+    <h4 class="stepsTitle">Step <%= @step_number.to_s %> of <%= @recipe.steps.count%></h4>
     <div class="divider"></div>
 
     <% unless @step.ingredients.nil? %>
