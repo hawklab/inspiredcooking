@@ -6,7 +6,7 @@ namespace recipes.Data
 {
     public interface IRecipeData
     {
-        IEnumerable<Recipe> GetAll();
+        IEnumerable<Recipe> GetRecipesByName(string name);
     }
 
     public class InMemoryRecipeData : IRecipeData
@@ -22,9 +22,10 @@ namespace recipes.Data
             };
         }
 
-        public IEnumerable<Recipe> GetAll()
+        public IEnumerable<Recipe> GetRecipesByName(string name = null)
         {
             return from r in recipes
+                    where string.IsNullOrEmpty(name) || r.Name.StartsWith(name)
                     orderby r.Name
                     select r;
         }

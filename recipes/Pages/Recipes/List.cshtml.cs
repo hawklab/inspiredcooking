@@ -24,10 +24,11 @@ namespace recipes.Pages.Recipes
             this.config = config;
 
         }
-        public void OnGet()
+        public void OnGet(string searchTerm)
         {
+
             Message = config["Message"];
-            Recipes = recipeData.GetAll();
+            Recipes = recipeData.GetRecipesByName(searchTerm);
         }
     }
 }

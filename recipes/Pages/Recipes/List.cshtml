@@ -6,6 +6,18 @@
 
 <h1>Recipes</h1>
 
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" name="searchTerm" />
+            <span class="input-group-btn">
+                <button class="btn btn-default"></button>
+                <i class="search"></i>
+            </span>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     @foreach(var recipe in Model.Recipes)
     {
@@ -20,4 +32,8 @@
         </tr>
     }
 </table>
-@Model.Message
+
+<div>
+    @Model.Message
+</div>
+
