@@ -29,6 +29,10 @@
             <td>@recipe.Servings</td>
             <td>@recipe.Difficulty</td>
             <td>@recipe.Cuisine</td>
+            <td>
+                <a class="btn btn-lg" asp-page="./Detail" asp-route-recipeId="@recipe.Id"></a>
+                <i class="zoom"></i>
+            </td>
         </tr>
     }
 </table>
