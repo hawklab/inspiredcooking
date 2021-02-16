@@ -8,6 +8,9 @@ namespace recipes.Data
     {
         IEnumerable<Recipe> GetRecipesByName(string name);
         Recipe GetById(int id);
+        Recipe Update(Recipe updatedRecipe);
+        int Commit();
+
     }
 
     public class InMemoryRecipeData : IRecipeData
@@ -26,6 +29,27 @@ namespace recipes.Data
         public Recipe GetById(int id)
         {
             return recipes.SingleOrDefault(r => r.Id == id);
+        }
+
+        public Recipe Update(Recipe updatedRecipe)
+        {
+            var recipe = recipes.SingleOrDefault(r => r.Id == updatedRecipe.Id);
+            if (recipe != null)
+            {
+                recipe.Name = updatedRecipe.Name;
+                recipe.Description = updatedRecipe.Description;
+                recipe.PrepTime = updatedRecipe.PrepTime;
+                recipe.CookTime = updatedRecipe.CookTime;
+                recipe.Servings = updatedRecipe.Servings;
+                recipe.Difficulty = updatedRecipe.Difficulty;
+                recipe.Cuisine = updatedRecipe.Cuisine;
+            }
+            return recipe;
+        }
+
+        public int Commit()
+        {
+            return 0;
         }
         public IEnumerable<Recipe> GetRecipesByName(string name = null)
         {

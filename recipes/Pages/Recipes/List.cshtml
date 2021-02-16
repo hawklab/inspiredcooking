@@ -31,7 +31,11 @@
             <td>@recipe.Cuisine</td>
             <td>
                 <a class="btn btn-lg" asp-page="./Detail" asp-route-recipeId="@recipe.Id"></a>
-                <i class="zoom"></i>
+                <i class="zoom">Show</i>
+            </td>
+            <td>
+                <a class="btn btn-lg" asp-page="./Edit" asp-route-recipeId="@recipe.Id"></a>
+                <i class="edit">Edit</i>
             </td>
         </tr>
     }
