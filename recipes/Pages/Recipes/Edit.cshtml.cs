@@ -25,11 +25,18 @@ namespace recipes.Pages.Recipes
             this.recipeData = recipeData;
             this.htmlHelper = htmlHelper;
         }
-        public IActionResult OnGet(int recipeId)
+        public IActionResult OnGet(int? recipeId)
         {
-
             Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
-            Recipe = recipeData.GetById(recipeId);
+            if (recipeId.HasValue)
+            {
+                Recipe = recipeData.GetById(recipeId.Value);
+            }
+            else
+            {
+                Recipe = new Recipe();
+            }
+            
             if (Recipe == null)
             {
                 return RedirectToPage("./NotFound");
@@ -39,14 +46,24 @@ namespace recipes.Pages.Recipes
 
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+                return Page();    
+            }
+            if (Recipe.Id > 0)
             {
                 recipeData.Update(Recipe);
-                recipeData.Commit();
-                return RedirectToPage("./Detail", new { recipeId = Recipe.Id});
+                TempData["Message"] = "Recipe Updated.";
             }
-            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
-            return Page();
+            else
+            {
+                recipeData.Add(Recipe);
+                TempData["Message"] = "Recipe Added.";
+            }
+            recipeData.Commit();
+            return RedirectToPage("./Detail", new { recipeId = Recipe.Id});
+            
         }
     }
 }

@@ -9,6 +9,7 @@ namespace recipes.Data
         IEnumerable<Recipe> GetRecipesByName(string name);
         Recipe GetById(int id);
         Recipe Update(Recipe updatedRecipe);
+        Recipe Add(Recipe newRecipe);
         int Commit();
 
     }
@@ -29,6 +30,13 @@ namespace recipes.Data
         public Recipe GetById(int id)
         {
             return recipes.SingleOrDefault(r => r.Id == id);
+        }
+
+        public Recipe Add(Recipe newRecipe)
+        {
+            recipes.Add(newRecipe);
+            newRecipe.Id = recipes.Max(r => r.Id) + 1;
+            return newRecipe;
         }
 
         public Recipe Update(Recipe updatedRecipe)

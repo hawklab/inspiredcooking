@@ -13,6 +13,9 @@ namespace recipes.Pages.Recipes
     {
         private readonly IRecipeData recipeData;
 
+        [TempData]
+        public string Message { get; set; }
+
         public Recipe Recipe { get; set; }
 
         public DetailModel(IRecipeData recipeData)
@@ -22,7 +25,7 @@ namespace recipes.Pages.Recipes
         public IActionResult OnGet(int recipeId)
         {
             Recipe = recipeData.GetById(recipeId);
-            if(Recipe == null)
+            if (Recipe == null)
             {
                 return RedirectToPage("./NotFound");
             }
