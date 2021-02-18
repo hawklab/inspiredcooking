@@ -31,7 +31,7 @@ namespace recipes
             });
 
 
-            services.AddSingleton<IRecipeData, InMemoryRecipeData>();
+            services.AddScoped<IRecipeData, SqlRecipeData>();
             services.AddRazorPages();
         }
 
