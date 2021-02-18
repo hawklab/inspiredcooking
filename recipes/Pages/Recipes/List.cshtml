@@ -30,12 +30,15 @@
             <td>@recipe.Difficulty</td>
             <td>@recipe.Cuisine</td>
             <td>
-                <a class="btn btn-lg" asp-page="./Detail" asp-route-recipeId="@recipe.Id"></a>
-                <i class="zoom">Show</i>
-            </td>
-            <td>
-                <a class="btn btn-lg" asp-page="./Edit" asp-route-recipeId="@recipe.Id"></a>
-                <i class="edit">Edit</i>
+                <a class="btn btn-lg" asp-page="./Detail" asp-route-recipeId="@recipe.Id">
+                    <i class="zoom">Show</i>
+                </a>
+                <a class="btn btn-lg" asp-page="./Edit" asp-route-recipeId="@recipe.Id">
+                    <i class="edit">Edit</i>
+                </a>
+                <a class="btn btn-lg" asp-page="./Delete" asp-route-recipeId="@recipe.Id">
+                    <i class="edit">Delete</i>
+                </a>
             </td>
         </tr>
     }
