@@ -39,6 +39,11 @@ namespace recipes.Data
             return db.Recipes.Find(id);
         }
 
+        public int GetCountOfRecipes()
+        {
+            return db.Recipes.Count();
+        }
+
         public IEnumerable<Recipe> GetRecipesByName(string name)
         {
             var query = from r in db.Recipes

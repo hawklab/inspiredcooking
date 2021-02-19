@@ -66,6 +66,11 @@ namespace recipes.Data
             }
             return recipe;
         }
+
+        public int GetCountOfRecipes()
+        {
+            return recipes.Count();
+        }
     }
 
 }

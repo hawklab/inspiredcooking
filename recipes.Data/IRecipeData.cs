@@ -10,6 +10,7 @@ namespace recipes.Data
         Recipe Update(Recipe updatedRecipe);
         Recipe Add(Recipe newRecipe);
         Recipe Delete(int id);
+        int GetCountOfRecipes();
         int Commit();
 
     }
