@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "recipes", "recipes\recipes.csproj", "{5AD5186F-6348-47C4-AB1E-E27C10029340}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "recipes", "recipes\recipes.csproj", "{5AD5186F-6348-47C4-AB1E-E27C10029340}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "recipes.Core", "recipes.Core\recipes.Core.csproj", "{CCBC9380-594E-401E-A0C8-D3C69499412F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "recipes.Core", "recipes.Core\recipes.Core.csproj", "{CCBC9380-594E-401E-A0C8-D3C69499412F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "recipes.Data", "recipes.Data\recipes.Data.csproj", "{9CBB1E87-1051-472E-898E-0381B74812BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "recipes.Data", "recipes.Data\recipes.Data.csproj", "{9CBB1E87-1051-472E-898E-0381B74812BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5AD5186F-6348-47C4-AB1E-E27C10029340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +55,11 @@ Global
 		{9CBB1E87-1051-472E-898E-0381B74812BC}.Release|x64.Build.0 = Release|Any CPU
 		{9CBB1E87-1051-472E-898E-0381B74812BC}.Release|x86.ActiveCfg = Release|Any CPU
 		{9CBB1E87-1051-472E-898E-0381B74812BC}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C195CFE3-741C-4D3A-A50E-C56D61068F28}
 	EndGlobalSection
 EndGlobal
