@@ -33,6 +33,9 @@ namespace recipes
 
             services.AddScoped<IRecipeData, SqlRecipeData>();
             services.AddRazorPages();
+
+            // for aspnetcore3.0+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +62,13 @@ namespace recipes
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+            });
+
+            // for aspnetcore3.0+
+            app.UseEndpoints(e =>
+            {
+                e.MapRazorPages();
+                e.MapControllers();
             });
         }
     }

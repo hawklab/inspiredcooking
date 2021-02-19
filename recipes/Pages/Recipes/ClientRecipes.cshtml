@@ -1,0 +1,20 @@
+@page
+@model recipes.Pages.Recipes.ClientRecipesModel
+@{
+    ViewData["Title"] = "ClientRecipes";
+}
+
+
+<h2>ClientRecipes</h2>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $.ajax("/api/recipes/",
+                { method: "get" })
+                .then(function (response) {
+                    console.dir(response);
+                });
+        });
+    </script>
+}
