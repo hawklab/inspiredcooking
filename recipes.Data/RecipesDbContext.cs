@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using recipes.Core;
 
 namespace recipes.Data
@@ -16,5 +11,6 @@ namespace recipes.Data
 
         }
         public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
     }
 }

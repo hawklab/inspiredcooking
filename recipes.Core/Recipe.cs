@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace recipes.Core
@@ -28,5 +29,7 @@ namespace recipes.Core
 
         [Required]
         public CuisineType Cuisine { get; set; }
+
+        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
     }
 }
