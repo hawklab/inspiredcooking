@@ -32,6 +32,7 @@ namespace recipes
 
 
             services.AddScoped<IRecipeData, SqlRecipeData>();
+            services.AddScoped<IIngredientData, SqlIngredientData>();
             services.AddRazorPages();
 
             // for aspnetcore3.0+
