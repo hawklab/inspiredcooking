@@ -1,0 +1,30 @@
+@page "/recipes"
+@model InspiredCooking.Pages.Recipes.ListModel
+@{
+    ViewData["Title"] = "Recipes";
+}
+
+<h1>Recipes</h1>
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" name="searchTerm" />
+            <span class="input-group-btn">
+                <button class="btn btn-default"></button>
+                <i class="search"></i>
+            </span>
+        </div>
+    </div>
+</form>
+
+@foreach(var recipe in Model.Recipes)
+{
+    <partial name="_Summary" model="recipe" />
+}
+
+<a asp-page=".\Edit" class="btn btn-primary">Add new</a>
+<div>
+    @Model.Message
+</div>
+

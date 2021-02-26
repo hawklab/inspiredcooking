@@ -1,0 +1,39 @@
+@page "/recipes/{recipeId:int}"
+@model InspiredCooking.Pages.Recipes.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>@Model.Recipe.Name</h1>
+<div>
+    Description: @Model.Recipe.Description
+</div>
+<div>
+    Ingredients:
+    
+    @foreach (var ingredient in Model.Recipe.Ingredients)
+    {
+        @ingredient.Name
+    }
+</div>
+<div>
+    Preptime: @Model.Recipe.PrepTime
+</div>
+<div>
+    Cooktime: @Model.Recipe.CookTime
+</div>
+<div>
+    Servings: @Model.Recipe.Servings
+</div>
+<div>
+    Difficulty: @Model.Recipe.Difficulty
+</div>
+<div>
+    Cuisines: @Model.Recipe.Cuisine
+</div>
+
+@if (Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+<a asp-page="./List" class="btn btn-default">All Recipes</a>
