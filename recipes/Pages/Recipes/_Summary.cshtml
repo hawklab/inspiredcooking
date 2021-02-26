@@ -7,7 +7,12 @@
         <h5 class="card-title">@Model.Name</h5>
         <p class="card-text">@Model.Description</p>
         <p class="card-text">Ingredients:</p>
-        <p class="card-text">@Model.Ingredients</p>
+        <p class="card-text">
+            @foreach (var ingredient in Model.Ingredients)
+            {
+                @ingredient.Name
+            }
+        </p>
 
 
     </div>

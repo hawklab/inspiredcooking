@@ -36,7 +36,9 @@ namespace recipes.Data
 
         public Recipe GetById(int id)
         {
-            return db.Recipes.Find(id);
+            return db.Recipes.Where(r => r.Id == id)
+                             .Include(r=> r.Ingredients)
+                             .First();
         }
 
         public int GetCountOfRecipes()
@@ -46,7 +48,7 @@ namespace recipes.Data
 
         public IEnumerable<Recipe> GetRecipesByName(string name)
         {
-            var query = from r in db.Recipes
+            var query = from r in db.Recipes.Include(r=> r.Ingredients)
                         where r.Name.StartsWith(name) || string.IsNullOrEmpty(name)
                         orderby r.Name
                         select r;

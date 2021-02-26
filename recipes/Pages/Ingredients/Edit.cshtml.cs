@@ -12,16 +12,20 @@ namespace recipes.Pages.Ingredients
     public class EditModel : PageModel
     {
         private readonly IIngredientData ingredientData;
+        private readonly IRecipeData recipeData;
 
         [BindProperty]
         public Ingredient Ingredient { get; set; }
 
-        public EditModel(IIngredientData ingredientData)
+        public EditModel(IIngredientData ingredientData, IRecipeData recipeData)
         {
             this.ingredientData = ingredientData;
+            this.recipeData = recipeData;
         }
-        public IActionResult OnGet(int? ingredientId)
+        public IActionResult OnGet(int? ingredientId, int recipeId)
         {
+            var recipe = recipeData.GetById(recipeId);
+
             if (ingredientId.HasValue)
             {
                 Ingredient = ingredientData.GetById(ingredientId.Value);
@@ -29,16 +33,25 @@ namespace recipes.Pages.Ingredients
             else
             {
                 Ingredient = new Ingredient();
+                Ingredient.RecipeId = recipe.Id;
             }
 
             if (Ingredient == null)
             {
                 return RedirectToPage("./NotFound");
             }
+            if (Ingredient.RecipeId == recipe.Id)
+            {
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("/'Notfound");
+            }
             return Page();
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(int recipeId)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +63,7 @@ namespace recipes.Pages.Ingredients
             }
             else
             {
-                Ingredient.RecipeId = 3;
+                Ingredient.RecipeId = recipeId;
                 ingredientData.Add(Ingredient);
                 
             }

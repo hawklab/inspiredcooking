@@ -9,7 +9,12 @@
     Description: @Model.Recipe.Description
 </div>
 <div>
-    Ingredients: @Model.Recipe.Ingredients
+    Ingredients:
+    
+    @foreach (var ingredient in Model.Recipe.Ingredients)
+    {
+        @ingredient.Name
+    }
 </div>
 <div>
     Preptime: @Model.Recipe.PrepTime
