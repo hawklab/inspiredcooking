@@ -56,7 +56,11 @@
 
 </form>
 
-@section Scripts 
+<component type="typeof(InspiredCooking.Web.Components.Counter)" param-InitialValue="0" render-mode="Server" />
+
+
+@section Scripts
 {
     <partial name="_ValidationScriptsPartial" />
+    <script src="/_framework/blazor.server.js"></script>
 }

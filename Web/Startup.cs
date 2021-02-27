@@ -34,6 +34,7 @@ namespace InspiredCooking
             services.AddScoped<IRecipeData, SqlRecipeData>();
             services.AddScoped<IIngredientData, SqlIngredientData>();
             services.AddRazorPages();
+            services.AddServerSideBlazor();
 
             // for aspnetcore3.0+
             services.AddControllers();
@@ -64,6 +65,7 @@ namespace InspiredCooking
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
             });
 
             // for aspnetcore3.0+

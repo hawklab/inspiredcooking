@@ -18,13 +18,20 @@
     </div>
 </form>
 
-@foreach(var recipe in Model.Recipes)
+@foreach (var recipe in Model.Recipes)
 {
     <partial name="_Summary" model="recipe" />
 }
 
 <a asp-page=".\Edit" class="btn btn-primary">Add new</a>
+
+<component type="typeof(InspiredCooking.Web.Components.Counter)" param-InitialValue="0" render-mode="Server" />
+
 <div>
     @Model.Message
 </div>
 
+@section Scripts
+{
+    <script src="_framework/blazor.server.js"></script>
+}
