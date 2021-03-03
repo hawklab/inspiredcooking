@@ -19,11 +19,9 @@
         <input asp-for="Recipe.Description" class="form-control" />
         <span class="text-danger" asp-validation-for="Recipe.Description"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="Recipe.Ingredients"></label>
-        <input asp-for="Recipe.Ingredients" class="form-control" />
-        <span class="text-danger" asp-validation-for="Recipe.Ingredients"></span>
-    </div>
+
+    <component type="typeof(InspiredCooking.Web.Components.IngredientEditField)" param-Ingredients="@Model.Recipe.Ingredients" render-mode="Server" />
+
     <div class="form-group">
         <label asp-for="Recipe.PrepTime"></label>
         <input asp-for="Recipe.PrepTime" class="form-control" />
@@ -56,7 +54,7 @@
 
 </form>
 
-<component type="typeof(InspiredCooking.Web.Components.Counter)" param-InitialValue="0" render-mode="Server" />
+
 
 
 @section Scripts

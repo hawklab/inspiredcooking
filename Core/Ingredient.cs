@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 
@@ -13,6 +14,7 @@ namespace InspiredCooking.Core
         public string Name { get; set; }
 
         // Reference property back to Recipe
+        [JsonIgnore]
         public Recipe Recipe { get; set; }
 
         //Explicit integer property containing the foreign key value

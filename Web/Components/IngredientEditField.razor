@@ -1,0 +1,24 @@
+﻿@using InspiredCooking.Core
+
+<div class="form-group">
+    <label asp-for="Recipe.Ingredients"></label>
+    <span class="text-danger" asp-validation-for="Recipe.Ingredients"></span>
+
+    @for (var i = 0; i < Ingredients.Count; i++)
+    {
+        <input type="hidden" name="Recipe.Ingredients[@i].Id" value="@Ingredients[i].Id">
+        <input class="form-control" type="text" name="Recipe.Ingredients[@i].Name" value="@Ingredients[i].Name">
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<Ingredient> Ingredients { get; set; }
+
+
+
+
+
+
+
+}
