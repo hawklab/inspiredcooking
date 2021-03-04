@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using InspiredCooking.Core;
 using InspiredCooking.Data;
 using static InspiredCooking.Core.Recipe;
-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace InspiredCooking.Pages.Recipes
 {
@@ -16,15 +17,17 @@ namespace InspiredCooking.Pages.Recipes
     {
         private readonly IRecipeData recipeData;
         private readonly IHtmlHelper htmlHelper;
+        private readonly IIngredientData ingredientData;
 
         [BindProperty]
         public Recipe Recipe { get; set; }
         public IEnumerable<SelectListItem> Cuisines { get; set; }
         public EditModel(IRecipeData recipeData,
-                         IHtmlHelper htmlHelper)
+                         IHtmlHelper htmlHelper, IIngredientData ingredientData)
         {
             this.recipeData = recipeData;
             this.htmlHelper = htmlHelper;
+            this.ingredientData = ingredientData;
         }
         public IActionResult OnGet(int? recipeId)
         {
@@ -54,6 +57,13 @@ namespace InspiredCooking.Pages.Recipes
             }
             if (Recipe.Id > 0)
             {
+                foreach (var ingredient in Recipe.Ingredients)
+                {
+                    if (ingredient.Id > 0)
+                    {
+                        ingredientData.Update(ingredient);
+                    }
+                }
                 recipeData.Update(Recipe);
                 TempData["Message"] = "Recipe Updated.";
             }
@@ -64,7 +74,6 @@ namespace InspiredCooking.Pages.Recipes
             }
             recipeData.Commit();
             return RedirectToPage("./Detail", new { recipeId = Recipe.Id});
-            
         }
     }
 }
