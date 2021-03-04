@@ -1,39 +1,67 @@
 @page "/recipes/{recipeId:int}"
 @model InspiredCooking.Pages.Recipes.DetailModel
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Recipe Details";
 }
 
-<h1>@Model.Recipe.Name</h1>
-<div>
-    Description: @Model.Recipe.Description
-</div>
-<div>
-    Ingredients:
-    
-    @foreach (var ingredient in Model.Recipe.Ingredients)
-    {
-        @ingredient.Name
-    }
-</div>
-<div>
-    Preptime: @Model.Recipe.PrepTime
-</div>
-<div>
-    Cooktime: @Model.Recipe.CookTime
-</div>
-<div>
-    Servings: @Model.Recipe.Servings
-</div>
-<div>
-    Difficulty: @Model.Recipe.Difficulty
-</div>
-<div>
-    Cuisines: @Model.Recipe.Cuisine
-</div>
+<div class="container">
+    <!--Grid row-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-12">
+            @if (Model.Message != null)
+            {
+                <div class="alert alert-info">@Model.Message</div>
+            }
+        </div>
+    </div>
 
-@if (Model.Message != null)
-{
-    <div class="alert alert-info">@Model.Message</div>
-}
-<a asp-page="./List" class="btn btn-default">All Recipes</a>
+    <!--Grid row-->
+    <div class="row">
+        <h1 class="display-4 text-capitalize col-12">@Model.Recipe.Name</h1>
+    </div>
+
+    <!--Grid row-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-6">
+            <img class="card-img-top" src="~/images/food.jpg" alt="Card image cap" />
+        </div>
+        <!--Grid column-->
+        <div class="col-6">
+            <div><p>@Model.Recipe.Description</p></div>
+            <div>
+                <p><i class="bi-clock"></i><strong> Preptime:</strong> @Model.Recipe.PrepTime</p>
+                <p><i class="bi-clock"></i><strong> Cooktime:</strong> @Model.Recipe.CookTime</p>
+                <p><i class="bi-people"></i><strong> Serving:</strong> @Model.Recipe.Servings people</p>
+                <p><i class="bi-shield"></i><strong> Difficulty:</strong> @Model.Recipe.Difficulty</p>
+                <p><i class="bi-geo"></i><strong> Cuisine:</strong> @Model.Recipe.Cuisine Cuisine</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Grid row-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-12">
+            <p class="font-weight-bold">Ingredients:</p>
+
+            @foreach (var ingredient in Model.Recipe.Ingredients)
+            {
+                <ul>
+                    <li>
+                        @ingredient.Name
+                    </li>
+                </ul>
+            }
+        </div>
+    </div>
+
+    <!--Grid row-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-4 offset-8">
+            <a asp-page="./List" class="btn btn-info float-right">Back to Recipes</a>
+        </div>
+    </div>
+</div>

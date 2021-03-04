@@ -3,33 +3,52 @@
 @{
     ViewData["Title"] = "Recipes";
 }
+<div class="container">
+    <div class="row">
+        <h1>Recipes</h1>
+    </div>
 
-<h1>Recipes</h1>
+    <!--Search recipes-->
+    <div class="row">
+        <form method="get" class="col-12">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="search" class="form-control" name="searchTerm" placeholder="Search" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info">
+                            <i class="bi-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--Recipes List-->
+    <div class="row">
+        @foreach (var recipe in Model.Recipes)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-12">
 
-<form method="get">
-    <div class="form-group">
-        <div class="input-group">
-            <input type="search" class="form-control" name="searchTerm" />
-            <span class="input-group-btn">
-                <button class="btn btn-default"></button>
-                <i class="search"></i>
-            </span>
+                <partial name="_Summary" model="recipe" />
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-4 offset-8">
+            <a asp-page=".\Edit" class="btn btn-info float-right">Add New Recipe</a>
         </div>
     </div>
-</form>
+    
 
-@foreach (var recipe in Model.Recipes)
-{
-    <partial name="_Summary" model="recipe" />
-}
-
-<a asp-page=".\Edit" class="btn btn-primary">Add new</a>
-
-<component type="typeof(InspiredCooking.Web.Components.Counter)" param-InitialValue="0" render-mode="Server" />
-
-<div>
-    @Model.Message
+    <!--<component type="typeof(InspiredCooking.Web.Components.Counter)" param-InitialValue="0" render-mode="Server" />-->
+    <!--
+        <div>
+        @Model.Message
+    </div>
+    -->
 </div>
+
 
 @section Scripts
 {

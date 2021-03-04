@@ -166,4 +166,8 @@
     <ProjectReference Include="..\Core\InspiredCooking.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
