@@ -6,8 +6,11 @@
 
     @for (var i = 0; i < Ingredients.Count; i++)
     {
-        <input type="hidden" name="Recipe.Ingredients[@i].Id" value="@Ingredients[i].Id">
-        <input class="form-control" type="text" name="Recipe.Ingredients[@i].Name" value="@Ingredients[i].Name">
+        var ingredient = Ingredients[i];
+        <input type="hidden" name="Recipe.Ingredients[@i].Id" value="@ingredient.Id">
+        <input class="form-control" type="text" name="Recipe.Ingredients[@i].Name" value="@ingredient.Name">
+        <button class="btn btn-primary" @onclick="() => DeleteIngredientField(ingredient)" @onclick:preventDefault="true">Delete Ingredient</button>
+
     }
 </div>
 
@@ -21,7 +24,13 @@
     {
         var newIngredient = new Ingredient();
         Ingredients.Add(newIngredient);
-        
+
+    }
+
+    private void DeleteIngredientField(Ingredient ingredient)
+    {
+        Ingredients.Remove(ingredient);
+
     }
 
 
