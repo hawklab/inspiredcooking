@@ -57,13 +57,26 @@ namespace InspiredCooking.Pages.Recipes
             }
             if (Recipe.Id > 0)
             {
+                // Update existing Ingredients
+                var savedIngredients = new List<int>();
                 foreach (var ingredient in Recipe.Ingredients)
                 {
                     if (ingredient.Id > 0)
                     {
+                        savedIngredients.Add(ingredient.Id);
                         ingredientData.Update(ingredient);
                     }
                 }
+
+                // Delete removed ingredients
+                var originalRecipe = recipeData.GetById(Recipe.Id);
+                var deletedIngredients = originalRecipe.Ingredients.Where(i => !savedIngredients.Contains(i.Id));
+                foreach (var deletedIngredient in deletedIngredients)
+                {
+                    ingredientData.Delete(deletedIngredient.Id);
+                }    
+        
+                // Update Recipe
                 recipeData.Update(Recipe);
                 TempData["Message"] = "Recipe Updated.";
             }
@@ -72,6 +85,7 @@ namespace InspiredCooking.Pages.Recipes
                 recipeData.Add(Recipe);
                 TempData["Message"] = "Recipe Added.";
             }
+
             recipeData.Commit();
             return RedirectToPage("./Detail", new { recipeId = Recipe.Id});
         }
