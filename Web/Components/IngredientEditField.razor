@@ -3,6 +3,7 @@
 @using static InspiredCooking.Core.Ingredient
 @using InspiredCooking.Data
 
+
 <div class="container">
     <!--Ingredients Fields-->
     <div class="row">
@@ -24,12 +25,16 @@
                 <input class="form-control" type="text" name="Recipe.Ingredients[@i].Amount" value="@ingredient.Amount">
             </div>
             <!-- Amount Unit-->
-            <div class="form-group col-md-4">
-                <select class="form-select" aria-label="Default select example"
-                        asp-for="Recipe.Ingredient" asp-items="@ingredient.Unit">
-                </select>
-                <span class="text-danger" asp-validation-for="Ingredient.Unit"></span>
-            </div>
+    <div class="form-group col-md-4">
+        
+
+        <select class="custom-select" name="Recipe.Ingredients[@i].Unit" @bind="ingredient.Unit" >
+            @foreach (var unit in (UnitType[]) Enum.GetValues(typeof(UnitType)))
+            {
+                <option value="@unit">@unit</option>
+            }
+        </select>
+    </div>
             <div class="form-group col-md-2">
                 <!-- Delete Ingredient-->
                 <button class="btn btn-primary" @onclick="() => DeleteIngredientField(ingredient)" @onclick:preventDefault="true"><i class="bi-trash"></i></button>
@@ -50,8 +55,6 @@
 
     private void AddIngredientField()
     {
-        
-
         var newIngredient = new Ingredient();
         Ingredients.Add(newIngredient);
 
@@ -60,7 +63,11 @@
     private void DeleteIngredientField(Ingredient ingredient)
     {
         Ingredients.Remove(ingredient);
+    }
 
+    protected override void OnParametersSet()
+    {
+        
     }
 }
 
