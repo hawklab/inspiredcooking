@@ -1,27 +1,57 @@
 ﻿@using InspiredCooking.Core
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using static InspiredCooking.Core.Ingredient
+@using InspiredCooking.Data
 
-<div class="form-group">
-    <label asp-for="Recipe.Ingredients"></label>
-    <span class="text-danger" asp-validation-for="Recipe.Ingredients"></span>
-
-    @for (var i = 0; i < Ingredients.Count; i++)
-    {
-        var ingredient = Ingredients[i];
-        <input type="hidden" name="Recipe.Ingredients[@i].Id" value="@ingredient.Id">
-        <input class="form-control" type="text" name="Recipe.Ingredients[@i].Name" value="@ingredient.Name">
-        <button class="btn btn-primary" @onclick="() => DeleteIngredientField(ingredient)" @onclick:preventDefault="true">Delete Ingredient</button>
-
-    }
+<div class="container">
+    <!--Ingredients Fields-->
+    <div class="row">
+        <p>Ingredients</p>
+    </div>
+    <div class="form-row">
+        <label asp-for="Recipe.Ingredients"></label>
+        <span class="text-danger" asp-validation-for="Recipe.Ingredients"></span>
+        @for (var i = 0; i < Ingredients.Count; i++)
+        {
+            var ingredient = Ingredients[i];
+            <input type="hidden" name="Recipe.Ingredients[@i].Id" value="@ingredient.Id">
+            <!-- Name-->
+            <div class="form-group col-md-4">
+                <input class="form-control" type="text" name="Recipe.Ingredients[@i].Name" value="@ingredient.Name">
+            </div>
+            <!--Amount-->
+            <div class="form-group col-md-2">
+                <input class="form-control" type="text" name="Recipe.Ingredients[@i].Amount" value="@ingredient.Amount">
+            </div>
+            <!-- Amount Unit-->
+            <div class="form-group col-md-4">
+                <select class="form-select" aria-label="Default select example"
+                        asp-for="Recipe.Ingredient" asp-items="@ingredient.Unit">
+                </select>
+                <span class="text-danger" asp-validation-for="Ingredient.Unit"></span>
+            </div>
+            <div class="form-group col-md-2">
+                <!-- Delete Ingredient-->
+                <button class="btn btn-primary" @onclick="() => DeleteIngredientField(ingredient)" @onclick:preventDefault="true"><i class="bi-trash"></i></button>
+            </div>
+        }
+    </div>
+    <!--Add new Ingredient-->
+    <div class="row">
+        <button class="btn btn-primary" @onclick="AddIngredientField" @onclick:preventDefault="true">Add New Ingredient</button>
+    </div>
 </div>
 
-<button class="btn btn-primary" @onclick="AddIngredientField" @onclick:preventDefault="true">Add Ingredient</button>
 
 @code {
+
     [Parameter]
     public List<Ingredient> Ingredients { get; set; }
 
     private void AddIngredientField()
     {
+        
+
         var newIngredient = new Ingredient();
         Ingredients.Add(newIngredient);
 
@@ -32,11 +62,5 @@
         Ingredients.Remove(ingredient);
 
     }
-
-
-
-
-
-
-
 }
+
