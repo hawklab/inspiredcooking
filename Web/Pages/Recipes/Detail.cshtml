@@ -60,6 +60,15 @@
     </div>
 
     <!--Grid row-->
+
+    <div class="row">
+        @if (Model.IsSaved)
+        {
+            <p>guardado</p>
+        } else {
+            <a asp-page="./SavetoMenu"  asp-route-recipeId="@Model.Recipe.Id">Add to Menu</a>
+        }
+    </div>
     <div class="row">
         <!--Grid column-->
         <div class="col-4 offset-8">

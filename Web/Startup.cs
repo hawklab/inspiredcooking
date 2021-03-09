@@ -30,11 +30,19 @@ namespace InspiredCooking
                 options.UseSqlServer(Configuration.GetConnectionString("RecipesDb"));
             });
 
-
             services.AddScoped<IRecipeData, SqlRecipeData>();
             services.AddScoped<IIngredientData, SqlIngredientData>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             // for aspnetcore3.0+
             services.AddControllers();
@@ -57,10 +65,9 @@ namespace InspiredCooking
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseNodeModules();
-
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

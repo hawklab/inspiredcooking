@@ -17,6 +17,7 @@
             <a class="btn btn-light col-4" asp-page="./Delete" asp-route-recipeId="@Model.Id">
                 <i class="bi-trash"></i>
             </a>
+            <a asp-page="cart" asp-page-handler="buynow" asp-route-id="@Model.Id">Buy Now</a>
         </div>
     </div>
 </div>
