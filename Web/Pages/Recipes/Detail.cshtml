@@ -60,19 +60,22 @@
     </div>
 
     <!--Grid row-->
-
-    <div class="row">
-        @if (Model.IsSaved)
-        {
-            <p>guardado</p>
-        } else {
-            <a asp-page="./SavetoMenu"  asp-route-recipeId="@Model.Recipe.Id">Add to Menu</a>
-        }
-    </div>
     <div class="row">
         <!--Grid column-->
-        <div class="col-4 offset-8">
-            <a asp-page="./List" class="btn btn-info float-right">Back to Recipes</a>
+        <div class="col-3">
+            @if (Model.IsSaved)
+            {
+                <p>guardado</p>
+            }
+            else
+            {
+                <a class="btn btn-light" id="btn-saved" asp-page="./SavetoMenu" asp-route-recipeId="@Model.Recipe.Id">Add to Menu</a>
+            }
         </div>
+        <!--Grid column-->
+        <div class="col-3">
+            <a asp-page="./List" class="btn btn-info">Back to Recipes</a>
+        </div>
+
     </div>
 </div>

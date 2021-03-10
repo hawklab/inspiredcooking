@@ -47,11 +47,11 @@
                             </a>
                             @if (Model.CurrentMenu.Contains(recipe.Id))
                             {
-                                <p>guardado</p>
+                                <a class="btn btn-light col-12" id="btn-saved">Saved in your Menu</a>
                             }
                             else
                             {
-                                <a asp-page="./SavetoMenu" asp-route-recipeId="@recipe.Id">Add to Menu</a>
+                                <a class="btn btn-light col-12" id="btn-saved" asp-page="./SavetoMenu" asp-route-recipeId="@recipe.Id" >Add to Menu</a>
                             }
                         </div>
                     </div>

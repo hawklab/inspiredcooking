@@ -33,6 +33,13 @@ btn-search {
     border-color: #1861ac;
 }
 
+#btn-saved {
+    margin-top:10px;
+    background-color: #393939;
+    color: #fff;
+}
+
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
