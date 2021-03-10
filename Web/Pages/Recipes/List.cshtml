@@ -29,7 +29,33 @@
         {
             <div class="col-lg-4 col-md-6 col-sm-12">
 
-                <partial name="_Summary" model="recipe" />
+                <div class="card">
+                    <img class="card-img-top" src="~/images/food.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title display-4 text-capitalize">@recipe.Name</h5>
+                        <p class="card-text text-muted">@recipe.Description</p>
+                        <p class="card-text"><small class="text-muted">Ready in @recipe.PrepTime </small></p>
+                        <div class="row">
+                            <a class="btn btn-light col-4" asp-page="./Detail" asp-route-recipeId="@recipe.Id">
+                                <i class="bi-zoom-in"></i>
+                            </a>
+                            <a class="btn btn-light col-4" asp-page="./Edit" asp-route-recipeId="@recipe.Id">
+                                <i class="bi-pencil"></i>
+                            </a>
+                            <a class="btn btn-light col-4" asp-page="./Delete" asp-route-recipeId="@recipe.Id">
+                                <i class="bi-trash"></i>
+                            </a>
+                            @if (Model.CurrentMenu.Contains(recipe.Id))
+                            {
+                                <p>guardado</p>
+                            }
+                            else
+                            {
+                                <a asp-page="./SavetoMenu" asp-route-recipeId="@recipe.Id">Add to Menu</a>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         }
     </div>

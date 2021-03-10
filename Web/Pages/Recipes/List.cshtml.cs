@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using InspiredCooking.Data;
 using InspiredCooking.Core;
+using InspiredCooking.Web.Helpers;
 
 namespace InspiredCooking.Pages.Recipes
 {
@@ -17,6 +18,8 @@ namespace InspiredCooking.Pages.Recipes
         public string Message { get; set; }
         public IEnumerable<Recipe> Recipes { get; set; }
 
+        public List<int> CurrentMenu { get; set; }
+
         public ListModel(IConfiguration config,
                         IRecipeData recipeData)
         {
@@ -26,9 +29,14 @@ namespace InspiredCooking.Pages.Recipes
         }
         public void OnGet(string searchTerm)
         {
-
             Message = config["Message"];
             Recipes = recipeData.GetRecipesByName(searchTerm);
+
+            CurrentMenu = HttpContext.Session.GetObjectFromJson<List<int>>("CurrentMenu");
+            if (CurrentMenu == null)
+            {
+                CurrentMenu = new List<int>();
+            }
         }
     }
 }

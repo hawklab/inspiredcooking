@@ -20,7 +20,8 @@ namespace InspiredCooking.Web.Pages.Recipes
             currentMenu.Add(recipeId);
             HttpContext.Session.SetObjectAsJson("CurrentMenu", currentMenu);
 
-            return RedirectToPage("./Detail", new { recipeId = recipeId });
+            
+            return Redirect(Request.Headers["Referer"].ToString());
         }
     }
-}
+ }
