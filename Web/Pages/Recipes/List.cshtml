@@ -4,10 +4,14 @@
     ViewData["Title"] = "Recipes";
 }
 <div class="container">
+    <!--Counter-->
+    <div class="row">
+        <p>You have @Model.CurrentMenu.Count recipes on your menu.</p>
+        <a href="" class="stretched-link">See your Menu</a>
+    </div>
     <div class="row">
         <h1>Recipes</h1>
     </div>
-
     <!--Search recipes-->
     <div class="row">
         <form method="get" class="col-12">
@@ -51,7 +55,7 @@
                             }
                             else
                             {
-                                <a class="btn btn-light col-12" id="btn-saved" asp-page="./SavetoMenu" asp-route-recipeId="@recipe.Id" >Add to Menu</a>
+                                <a class="btn btn-light col-12" id="btn-saved" asp-page="./SavetoMenu" asp-route-recipeId="@recipe.Id">Add to Menu</a>
                             }
                         </div>
                     </div>
@@ -65,7 +69,10 @@
             <a asp-page=".\Edit" class="btn btn-info float-right">Add New Recipe</a>
         </div>
     </div>
-    
+
+
+
+
 
     <!--<component type="typeof(InspiredCooking.Web.Components.Counter)" param-InitialValue="0" render-mode="Server" />-->
     <!--
@@ -74,6 +81,7 @@
     </div>
     -->
 </div>
+
 
 
 @section Scripts

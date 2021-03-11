@@ -37,6 +37,7 @@ namespace InspiredCooking.Pages.Recipes
             {
                 CurrentMenu = new List<int>();
             }
+            CurrentMenu.Count();
         }
     }
 }
