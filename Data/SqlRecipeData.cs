@@ -47,6 +47,15 @@ namespace InspiredCooking.Data
             return db.Recipes.Count();
         }
 
+        public IEnumerable<Recipe> GetRecipesByIds(IEnumerable<int> ids)
+        {
+            var query = from r in db.Recipes.Include(r => r.Ingredients)
+                        where ids.Contains(r.Id)
+                        orderby r.Name
+                        select r;
+            return query;
+        }
+
         public IEnumerable<Recipe> GetRecipesByName(string name)
         {
             var query = from r in db.Recipes.Include(r=> r.Ingredients)

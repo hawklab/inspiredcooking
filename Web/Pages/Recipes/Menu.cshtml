@@ -1,0 +1,59 @@
+﻿@page "/recipes/menu"
+@model InspiredCooking.Web.Pages.Recipes.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<div class="container">
+    <!--Grid row Menu Title-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-12">
+            <h1 class="display-4 text-capitalize col-12">Your Menu</h1>
+        </div>
+    </div>
+    <!--Grid row Menu List-->
+    <div class="row">
+        @foreach (var recipe in Model.Recipes)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <img class="card-img-top" src="~/images/food.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <p><i class="bi-bag-check-fill"></i><strong> Recipe:</strong> @recipe.Name</p>
+                        <p><i class="bi-geo"></i><strong> Cuisine:</strong> @recipe.Cuisine Cuisine</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!--Grid row Menu Ingredients-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-md-12 col-sm-12">
+            <h1 class="display-5 text-capitalize col-12">And this are the ingredients you will need:</h1>
+        </div>
+        <div class="row">
+            @foreach (var recipe in Model.Recipes)
+            {
+                @foreach (var ingredient in recipe.Ingredients)
+                {
+            <div class="col-md-6 col-sm-12">
+                <ul>
+                    <li>
+                        @ingredient.Name
+                        @ingredient.Amount
+                        @ingredient.Unit
+                    </li>
+                </ul>
+            </div>
+                    
+                }
+            }
+
+        </div>
+    </div>
+
+
+
+

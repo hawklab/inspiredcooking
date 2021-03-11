@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using InspiredCooking.Data;
+using Microsoft.AspNetCore.DataProtection;
+using System.IO;
 
 namespace InspiredCooking
 {
@@ -36,6 +38,7 @@ namespace InspiredCooking
             services.AddServerSideBlazor();
 
             services.AddDistributedMemoryCache();
+            services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(@".\test.keys"));
 
             services.AddSession(options =>
             {

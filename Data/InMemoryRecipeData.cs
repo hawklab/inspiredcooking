@@ -71,6 +71,11 @@ namespace InspiredCooking.Data
         {
             return recipes.Count();
         }
+
+        public IEnumerable<Recipe> GetRecipesByIds(IEnumerable<int> ids)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }
