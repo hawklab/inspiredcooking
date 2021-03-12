@@ -41,6 +41,17 @@ namespace InspiredCooking.Pages.Recipes
             {
                 this.IsSaved = savedRecipe.Contains(recipeId);
             }
+
+            // viewed recipes
+            var viewedRecipes = HttpContext.Session.GetObjectFromJson<List<int>>("ViewedRecipes");
+
+            if (viewedRecipes == null)
+            {
+                viewedRecipes = new List<int>();
+            }
+            viewedRecipes.Add(recipeId);
+            HttpContext.Session.SetObjectAsJson("ViewedRecipesKey", viewedRecipes);
+
             return Page();
         }
     }

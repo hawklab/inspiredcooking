@@ -63,12 +63,35 @@
             </div>
         }
     </div>
+    <!--Recipes List-->
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+
     <!--Add New Recipe Link-->
     <div class="row">
         <div class="col-4 offset-8">
             <a asp-page=".\Edit" class="btn btn-info float-right">Add New Recipe</a>
         </div>
     </div>
+
+    <!--Viewed Recipes List-->
+    <div class="row">
+        @foreach (var recipe in @Model.ViewedRecipes)
+        {
+        <div class="col-md-3 col-sm-2">
+            <ul>
+                <li>@recipe.Name</li>
+                <li>@recipe.Cuisine</li>
+                <li>@recipe.CookTime</li>
+            </ul>
+        </div>  
+        
+        }
+    </div>
+
 </div>
 
 
