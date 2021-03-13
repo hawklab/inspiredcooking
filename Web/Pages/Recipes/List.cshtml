@@ -51,7 +51,7 @@
                             </a>
                             @if (Model.CurrentMenu.Contains(recipe.Id))
                             {
-                                <a class="btn btn-light col-12" id="btn-saved">Saved in your Menu</a>
+                                <a class="btn btn-light col-12" id="btn-saved" asp-page="./RemoveFromMenu" asp-route-recipeId="@recipe.Id">Delete from your Menu</a>
                             }
                             else
                             {
