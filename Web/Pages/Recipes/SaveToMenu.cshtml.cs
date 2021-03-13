@@ -8,8 +8,9 @@ namespace InspiredCooking.Web.Pages.Recipes
 {
     public class SaveToMenuModel : PageModel
     {
+        
 
-        public ActionResult OnGet(int recipeId)
+        public ActionResult OnPost(int recipeId)
         {
             var currentMenu = HttpContext.Session.GetObjectFromJson<List<int>>("CurrentMenu");
 
@@ -20,7 +21,6 @@ namespace InspiredCooking.Web.Pages.Recipes
             currentMenu.Add(recipeId);
             HttpContext.Session.SetObjectAsJson("CurrentMenu", currentMenu);
 
-            
             return Redirect(Request.Headers["Referer"].ToString());
         }
     }
