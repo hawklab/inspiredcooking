@@ -1,9 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using InspiredCooking.Core;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 namespace InspiredCooking.Data
 {
-    public class InspiredCookingDbContext : DbContext
+    public class InspiredCookingDbContext : IdentityDbContext<IdentityUser>
     {
         public InspiredCookingDbContext(DbContextOptions<InspiredCookingDbContext> options)
             : base(options)
@@ -12,5 +19,13 @@ namespace InspiredCooking.Data
         }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            // Customize the ASP.NET Identity model and override the defaults if needed.
+            // For example, you can rename the ASP.NET Identity table names and more.
+            // Add your customizations after calling base.OnModelCreating(builder);
+        }
     }
 }

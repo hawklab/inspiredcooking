@@ -12,6 +12,9 @@ using Microsoft.Extensions.Hosting;
 using InspiredCooking.Data;
 using Microsoft.AspNetCore.DataProtection;
 using System.IO;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using InspiredCooking.Web;
 
 namespace InspiredCooking
 {
@@ -31,6 +34,10 @@ namespace InspiredCooking
             {
                 options.UseSqlServer(Configuration.GetConnectionString("RecipesDb"));
             });
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<InspiredCookingDbContext>()
+                    .AddDefaultTokenProviders();
 
             services.AddScoped<IRecipeData, SqlRecipeData>();
             services.AddScoped<IIngredientData, SqlIngredientData>();
@@ -69,6 +76,7 @@ namespace InspiredCooking
             app.UseStaticFiles();
             app.UseNodeModules();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
 
