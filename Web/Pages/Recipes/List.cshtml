@@ -6,63 +6,56 @@
 <div class="container">
     <!--Counter-->
     <div class="row">
-        <p>You have @Model.CurrentMenu.Count recipes on your<a asp-page=".\menu"> menu.</a></p>
-
-    </div>
-    <div class="row">
-        <h1>Recipes</h1>
+        <div class="col">
+            <p>You have @Model.CurrentMenu.Count recipes on your<a asp-page=".\menu"> CookBook.</a></p>
+        </div>
     </div>
     <!--Search recipes-->
     <div class="row">
-        <form method="get" class="col-12">
-            <div class="form-group">
-                <div class="input-group">
-                    <input type="search" class="form-control" name="searchTerm" placeholder="Search" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info">
-                            <i class="bi-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </form>
+        <div class="col-12">
+            <nav class="navbar navbar-light bg-light float-right">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+        </div>
     </div>
     <!--Recipes List-->
     <div class="row">
         @foreach (var recipe in Model.Recipes)
         {
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-12">
 
                 <div class="card">
                     <img class="card-img-top" src="~/images/food.jpg" alt="Card image cap" />
                     <div class="card-body">
-                        <h5 class="card-title display-4 text-capitalize">@recipe.Name</h5>
-                        <p class="card-text text-muted">@recipe.Description</p>
+                        <h3 class="card-title text-capitalize" id="recipe-title">@recipe.Name</h3>
+                        <p class="card-text text-muted" id="recipe-descrip">@recipe.Description</p>
                         <p class="card-text"><small class="text-muted">Ready in @recipe.PrepTime </small></p>
                         <div class="row">
-                            <a class="btn btn-light col-4" asp-page="./Detail" asp-route-recipeId="@recipe.Id">
-                                <i class="bi-zoom-in"></i>
+                            <a class="btn col-4" asp-page="./Detail" asp-route-recipeId="@recipe.Id">
+                                <i class="bi-zoom-in" style="color: forestgreen"></i>
                             </a>
-                            <a class="btn btn-light col-4" asp-page="./Edit" asp-route-recipeId="@recipe.Id">
+                            <a class="btn col-4" asp-page="./Edit" asp-route-recipeId="@recipe.Id">
                                 <i class="bi-pencil"></i>
                             </a>
-                            <a class="btn btn-light col-4" asp-page="./Delete" asp-route-recipeId="@recipe.Id">
+                            <a class="btn col-4" asp-page="./Delete" asp-route-recipeId="@recipe.Id">
                                 <i class="bi-trash"></i>
                             </a>
-                            @if (Model.CurrentMenu.Contains(recipe.Id))
-                            {
-                                <form method="post" asp-page="./RemoveFromMenu" asp-route-recipeId="@recipe.Id">
-                                    <button class="btn btn-light col-12" id="btn-saved">Delete from your Menu</button>
-                                </form> 
-                            }
-                            else
-                            {
-                                <form method="post" asp-page="./SavetoMenu" asp-route-recipeId="@recipe.Id">
-                            
-                                    <button class="btn btn-light col-12" id="btn-saved">Add to Menu</button>
-                                </form>    
-                            }
                         </div>
+                        @if (Model.CurrentMenu.Contains(recipe.Id))
+                        {
+                            <form class="row" method="post" asp-page="./RemoveFromMenu" asp-route-recipeId="@recipe.Id">
+                                <button class="btn btn-outline-success col-12">Delete from CookBook</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form class="row" method="post" asp-page="./SavetoMenu" asp-route-recipeId="@recipe.Id">
+                                <button class="btn btn-outline-success col-12" id="btn-add">Add to CookBook</button>
+                            </form>
+                        }
                     </div>
                 </div>
             </div>
@@ -78,7 +71,7 @@
     <!--Add New Recipe Link-->
     <div class="row">
         <div class="col-4 offset-8">
-            <a asp-page=".\Edit" class="btn btn-info float-right">Add New Recipe</a>
+            <a asp-page=".\Edit" class="btn btn-success float-right">Add New Recipe</a>
         </div>
     </div>
 
@@ -86,14 +79,14 @@
     <div class="row">
         @foreach (var recipe in @Model.ViewedRecipes)
         {
-        <div class="col-md-3 col-sm-2">
-            <ul>
-                <li>@recipe.Name</li>
-                <li>@recipe.Cuisine</li>
-                <li>@recipe.CookTime</li>
-            </ul>
-        </div>  
-        
+            <div class="col-md-3 col-sm-2">
+                <ul>
+                    <li>@recipe.Name</li>
+                    <li>@recipe.Cuisine</li>
+                    <li>@recipe.CookTime</li>
+                </ul>
+            </div>
+
         }
     </div>
 
