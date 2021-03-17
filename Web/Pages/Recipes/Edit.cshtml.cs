@@ -10,6 +10,7 @@ using InspiredCooking.Data;
 using static InspiredCooking.Core.Recipe;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.AspNetCore.Identity;
 
 namespace InspiredCooking.Pages.Recipes
 {
@@ -19,15 +20,18 @@ namespace InspiredCooking.Pages.Recipes
         private readonly IHtmlHelper htmlHelper;
         private readonly IIngredientData ingredientData;
 
+        private readonly UserManager<IdentityUser> userManager;
+
         [BindProperty]
         public Recipe Recipe { get; set; }
         public IEnumerable<SelectListItem> Cuisines { get; set; }
         public EditModel(IRecipeData recipeData,
-                         IHtmlHelper htmlHelper, IIngredientData ingredientData)
+                         IHtmlHelper htmlHelper, IIngredientData ingredientData, UserManager<IdentityUser> userManager)
         {
             this.recipeData = recipeData;
             this.htmlHelper = htmlHelper;
             this.ingredientData = ingredientData;
+            this.userManager = userManager;
         }
         public IActionResult OnGet(int? recipeId)
         {
@@ -50,6 +54,9 @@ namespace InspiredCooking.Pages.Recipes
 
         public IActionResult OnPost()
         {
+            var userId = userManager.GetUserId(User);
+
+            
             if (!ModelState.IsValid)
             {
                 Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
@@ -82,6 +89,7 @@ namespace InspiredCooking.Pages.Recipes
             }
             else
             {
+                Recipe.UserId = userId;
                 recipeData.Add(Recipe);
                 TempData["Message"] = "Recipe Added.";
             }
