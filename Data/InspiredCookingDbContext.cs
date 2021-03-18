@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace InspiredCooking.Data
 {
-    public class InspiredCookingDbContext : IdentityDbContext<IdentityUser>
+    public class InspiredCookingDbContext : IdentityDbContext<ApplicationUser>
     {
         public InspiredCookingDbContext(DbContextOptions<InspiredCookingDbContext> options)
             : base(options)

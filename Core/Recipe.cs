@@ -34,7 +34,7 @@ namespace InspiredCooking.Core
 
         public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
 
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
 
         public string UserId { get; set; }
     }
