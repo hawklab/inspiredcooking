@@ -10,5 +10,7 @@ namespace InspiredCooking.Core
     public class ApplicationUser : IdentityUser
     {
         public string DisplayName { get; set; }
+
+        public IEnumerable<FavoriteRecipe> FavoriteRecipes { get; set; }
     }
 }

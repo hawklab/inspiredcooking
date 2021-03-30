@@ -20,6 +20,8 @@ namespace InspiredCooking.Data
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
 
+        public DbSet<FavoriteRecipe> FavoriteRecipes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

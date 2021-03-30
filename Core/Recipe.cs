@@ -37,5 +37,7 @@ namespace InspiredCooking.Core
         public ApplicationUser User { get; set; }
 
         public string UserId { get; set; }
+
+        public IEnumerable<FavoriteRecipe> FavoritedByUsers { get; set; }
     }
 }
