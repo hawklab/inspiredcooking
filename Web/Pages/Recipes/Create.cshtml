@@ -1,0 +1,100 @@
+@page "/recipes/Create"
+@model InspiredCooking.Pages.Recipes.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <!--Grid row Recipe Title-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-12">
+            <h1 class="display-4 text-capitalize col-12">New Recipe:</h1>
+        </div>
+    </div>
+    <!--Grid row Recipe Creating Fields-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-12">
+            <form method="post">
+                <!--Name-->
+                <div class="for-group row">
+                    <input type="hidden" asp-for="Recipe.Id">
+                    <label asp-for="Recipe.Name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Recipe.Name" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Recipe.Name"></span>
+                    </div>
+                </div>
+                <!--Description-->
+                <div class="for-group row">
+                    <label asp-for="Recipe.Description" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Recipe.Description" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Recipe.Description"></span>
+                    </div>
+                </div>
+                <!--Preptime-->
+                <div class="for-group row">
+                    <label asp-for="Recipe.PrepTime" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Recipe.PrepTime" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Recipe.PrepTime"></span>
+                    </div>
+                </div>
+                <!--Cooktime-->
+                <div class="for-group row">
+                    <label asp-for="Recipe.CookTime" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Recipe.CookTime" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Recipe.CookTime"></span>
+                    </div>
+                </div>
+                <!--Servings-->
+                <div class="for-group row">
+                    <label asp-for="Recipe.Servings" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Recipe.Servings" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Recipe.Servings"></span>
+                    </div>
+                </div>
+                <!--Difficulty-->
+                <div class="for-group row">
+                    <label asp-for="Recipe.Difficulty" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Recipe.Difficulty" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Recipe.Difficulty"></span>
+                    </div>
+                </div>
+                <!--Cuisine-->
+                <div class="for-group row">
+                    <label asp-for="Recipe.Cuisine" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <select class="form-select" aria-label="Default select example"
+                                asp-for="Recipe.Cuisine" asp-items="@Model.Cuisines">
+                        </select>
+                        <span class="text-danger" asp-validation-for="Recipe.Cuisine"></span>
+                    </div>
+                </div>
+                <!--Ingredients-->
+                <component type="typeof(InspiredCooking.Web.Components.IngredientEditField)" param-Ingredients="@Model.Recipe.Ingredients" render-mode="Server" />
+
+                <!--Grid row Recipe Saving Fields-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-4 offset-8">
+                        <button type="submit" class="btn btn-success float-right">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="/_framework/blazor.server.js"></script>
+}
