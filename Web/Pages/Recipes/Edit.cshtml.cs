@@ -31,29 +31,27 @@ namespace InspiredCooking.Pages.Recipes
         }
         public IActionResult OnGet(int? recipeId)
         {
-            // authorizing the user to edit their own recipes
-            //var currentUser = userManager.GetUserId(User); 
-            //var author = Recipe.UserId; 
-            
-            //if (currentUser == author)
-            //{
-
-            //}
-
-           
-            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
             Recipe = recipeData.GetById(recipeId.Value);
-            if (Recipe == null)
+
+            // Authorizing the user to edit their own recipes
+            var currentUserId = userManager.GetUserId(User); 
+            var authorId = Recipe.UserId; 
+          
+            if (currentUserId == authorId)
             {
-                return RedirectToPage("./NotFound");
+                Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+                if (Recipe == null)
+                {
+                    return RedirectToPage("./NotFound");
+                }
+                return Page();
             }
-            return Page();
+            return RedirectToPage("./List");
         }
 
         public IActionResult OnPost()
         {
             var userId = userManager.GetUserId(User);
-
 
             if (!ModelState.IsValid)
             {
