@@ -1,13 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using InspiredCooking.Data;
 using InspiredCooking.Core;
 using InspiredCooking.Web.Helpers;
+using Microsoft.AspNetCore.Identity;
 
 namespace InspiredCooking.Pages.Recipes
 {
@@ -15,21 +13,28 @@ namespace InspiredCooking.Pages.Recipes
     {
         private readonly IConfiguration config;
         private readonly IRecipeData recipeData;
+
+        private readonly UserManager<ApplicationUser> userManager;
         public string Message { get; set; }
         public IEnumerable<Recipe> Recipes { get; set; }
 
         public List<int> CurrentMenu { get; set; }
         public IEnumerable<Recipe> ViewedRecipes { get; set; }
 
+        public string CurrentUserId { get; set; }
+
         public ListModel(IConfiguration config,
-                        IRecipeData recipeData)
+                        IRecipeData recipeData,
+                        UserManager<ApplicationUser> userManager)
         {
             this.recipeData = recipeData;
+            this.userManager = userManager;
             this.config = config;
 
         }
         public void OnGet(string searchTerm)
         {
+            CurrentUserId = userManager.GetUserId(User);
             Message = config["Message"];
             Recipes = recipeData.GetRecipesByName(searchTerm);
 

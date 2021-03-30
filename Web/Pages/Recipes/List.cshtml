@@ -37,12 +37,16 @@
                             <a class="btn col-4" asp-page="./Detail" asp-route-recipeId="@recipe.Id">
                                 <i class="bi-zoom-in" style="color: forestgreen"></i>
                             </a>
-                            <a class="btn col-4" asp-page="./Edit" asp-route-recipeId="@recipe.Id">
-                                <i class="bi-pencil"></i>
-                            </a>
-                            <a class="btn col-4" asp-page="./Delete" asp-route-recipeId="@recipe.Id">
-                                <i class="bi-trash"></i>
-                            </a>
+                            @if (Model.CurrentUserId == recipe.UserId)
+                            {
+                                <a class="btn col-4" asp-page="./Edit" asp-route-recipeId="@recipe.Id">
+                                    <i class="bi-pencil"></i>
+                                </a>
+                                <a class="btn col-4" asp-page="./Delete" asp-route-recipeId="@recipe.Id">
+                                    <i class="bi-trash"></i>
+                                </a>
+                            }
+
                         </div>
                         @if (Model.CurrentMenu.Contains(recipe.Id))
                         {
