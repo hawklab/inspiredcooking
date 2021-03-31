@@ -37,6 +37,13 @@
                             <a class="btn col-4" asp-page="./Detail" asp-route-recipeId="@recipe.Id">
                                 <i class="bi-zoom-in" style="color: forestgreen"></i>
                             </a>
+                            @if (Model.CurrentUserId != recipe.UserId)
+                            {
+                                <form class="row" method="post" asp-page="./AddToFavorites" asp-route-recipeId="@recipe.Id">
+                                    <button class="btn btn-outline-success col-12" id="btn-add">
+                                    <i class="bi-suit-heart" style="color: forestgreen"></i></button>
+                                </form>
+                            }
                             @if (Model.CurrentUserId == recipe.UserId)
                             {
                                 <a class="btn col-4" asp-page="./Edit" asp-route-recipeId="@recipe.Id">
