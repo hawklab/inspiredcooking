@@ -17,9 +17,16 @@ namespace InspiredCooking.Data
 
         public bool AddToFavorites(Recipe recipe, ApplicationUser user)
         {
-            throw new NotImplementedException();
-        }
+            var favorited = new FavoriteRecipe();
+            favorited.RecipeId = recipe.Id;
+            favorited.UserId = user.Id;
+            //favorited.CreatedAt = DateTime.Now;
 
+            db.Add(favorited);
+            db.SaveChanges();
+
+            return true;
+        }
 
     }
 
