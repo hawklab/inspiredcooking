@@ -43,6 +43,7 @@ namespace InspiredCooking
             services.AddScoped<IRecipeData, SqlRecipeData>();
             services.AddScoped<IIngredientData, SqlIngredientData>();
             services.AddScoped<IFavoriteRecipeData, SqlFavoriteRecipeData>();
+            services.AddScoped<IImageData, SqlImageData>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
