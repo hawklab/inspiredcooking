@@ -1,9 +1,10 @@
 ﻿using InspiredCooking.Core;
+using Microsoft.AspNetCore.Http;
 
 namespace InspiredCooking.Data
 {
     public interface IImageData
     {
-        Image UploadImage(Image newImage);
+        Image UploadImage(IFormFile newImage);
     }
 }

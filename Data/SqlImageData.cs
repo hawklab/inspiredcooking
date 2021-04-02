@@ -2,6 +2,8 @@
 using InspiredCooking.Core;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace InspiredCooking.Data
 {
@@ -14,9 +16,17 @@ namespace InspiredCooking.Data
             this.db = db;
         }
 
-        public Image UploadImage(Image newImage)
+        public Image UploadImage(IFormFile newImageFile)
         {
+            var newImage = new Image();
+            newImage.ImageTitle = newImageFile.FileName;
+            var ms = new MemoryStream();
+            newImageFile.CopyTo(ms);
+            newImage.ImageData = ms.ToArray();
+            
             db.Add(newImage);
+            db.SaveChanges();
+            
             return newImage;
         }
     }
