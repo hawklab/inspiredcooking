@@ -29,5 +29,11 @@ namespace InspiredCooking.Data
             
             return newImage;
         }
+
+        public Image GetById(int id)
+        {
+            return db.Images.Where(i => i.Id == id)
+                            .First();
+        }
     }
 }
