@@ -20,11 +20,23 @@ p {
     font-weight: 300;
 }
 
+.recipe-inputs p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.ingredients-input {
+    margin-top: 20px;
+}
+
 .nav-item {
     color: #008601;
     font-weight: 400;
 }
 
+.alert p {
+    margin-top: 10px;
+}
 
 #logo {
     width: 75px;
@@ -44,31 +56,61 @@ p {
 }
 
 .card {
-    margin-bottom: 8px;  
+    margin-bottom: 4px;  
 }
 
+/*
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+*/
 
+.btn-main {
+    color: #fff;
+    background-color: #008601;
+    border-color: #008601;
+}
+
+.btn-main:hover {
+        color: #fff;
+        background-color: #006b01;
+        border-color: #008601;
+  }
+
+.btn-minor {
+    color: #fff;
+    background-color: #454545;
+    border-color: #454545;
+}
+
+.btn-minor:hover {
+    color: #fff;
+    background-color: #191919;
+    border-color: #191919;
+}
+
+/*
 btn-search {
     color: #fff;
     background-color: #dc3545;
     border-color: #1861ac;
-}
+    }
 
-#btn-add {
+*/
+/* #btn-add {
     margin-top: 10px;
     text-align: center;
     display: block;
-}
-
-i {
+}*/
+/*
+    i {
     color: #008601;
+}*/
+.viewed-recipes {
+    margin-bottom: 40px;
 }
-
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
@@ -119,5 +161,5 @@ body {
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  line-height: 60px; 
 }

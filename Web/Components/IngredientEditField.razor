@@ -6,7 +6,7 @@
 
 <div class="container">
     <!--Ingredients Fields-->
-    <div class="row">
+    <div class="row recipe-inputs ingredients-input">
         <p>Ingredients</p>
     </div>
     <div class="form-row">
@@ -42,8 +42,8 @@
         }
     </div>
     <!--Add new Ingredient-->
-    <div class="row">
-        <button class="btn btn-primary" @onclick="AddIngredientField" @onclick:preventDefault="true">Add New Ingredient</button>
+    <div class="row col-4 offset-8">
+        <button class="btn btn-minor float-right" @onclick="AddIngredientField" @onclick:preventDefault="true">Add New Ingredient</button>
     </div>
 </div>
 

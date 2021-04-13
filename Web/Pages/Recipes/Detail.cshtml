@@ -5,7 +5,7 @@
 }
 
 <div class="container">
-    <!--Grid row-->
+    <!--Grid row Message-->
     <div class="row">
         <!--Grid column-->
         <div class="col-12">
@@ -16,19 +16,20 @@
         </div>
     </div>
 
-    <!--Grid row-->
+    <!--Grid row Recipe Name-->
     <div class="row">
         <h1 class="display-4 text-capitalize col-12">@Model.Recipe.Name</h1>
     </div>
 
-    <!--Grid row-->
+    <!--Grid row Recipe Information-->
     <div class="row">
-        <!--Grid column-->
-        <div class="col-6">
+        <!--Grid column Image-->
+        <div class="col-sm-12 col-md-4 col-lg-6">
             <img class="card-img-top" src="~/images/@Model.Recipe.ImageId" alt="Card image cap" />
         </div>
-        <!--Grid column-->
-        <div class="col-6">
+
+        <!--Grid column Content-->
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div><p>@Model.Recipe.Description</p></div>
             <div>
                 <p><i class="bi-clock"></i><strong> Preptime:</strong> @Model.Recipe.PrepTime</p>
@@ -39,10 +40,46 @@
             </div>
         </div>
     </div>
+    <!--Grid row Actions-->
+    <div class="row">
+        <!--Grid column Action Add to Cookbook-->
+        <div class="col-2">
+            @if (Model.IsSaved)
+            {
+                <p>guardado</p>
+            }
+            else
+            {
+                <a class="btn btn-light" id="btn-saved" asp-page="./SavetoMenu" asp-route-recipeId="@Model.Recipe.Id"><i class="bi-bookmark" style="color: forestgreen"></i> Add to Cookbook</a>
+            }
+        </div>
+        <!--Grid column Action Add to Favorites-->
+        <div class="col-2">
+            @if (Model.IsSaved)
+            {
+                <p>guardado</p>
+            }
+            else
+            {
+                <a class="btn btn-light" id="" asp-page="" asp-route-recipeId=""><i class="bi-heart" style="color: forestgreen"></i> Add to Favorites</a>
+            }
+        </div>
+        <!--Grid column Action Add to Cookbook-->
+        <div class="col-2">
+            @if (Model.IsSaved)
+            {
+                <p>guardado</p>
+            }
+            else
+            {
+                <a class="btn btn-light" id="" asp-page="" asp-route-recipeId="@Model.Recipe.Id"><i class="bi-share" style="color: forestgreen"></i> Share</a>
+            }
+        </div>
+    </div>
 
     <!--Grid row-->
     <div class="row">
-        <!--Grid column-->
+        <!--Grid column Recipe Ingredients-->
         <div class="col-12">
             <p class="font-weight-bold">Ingredients:</p>
 
@@ -59,23 +96,16 @@
         </div>
     </div>
 
-    <!--Grid row-->
+
+    <!--Grid row -->
     <div class="row">
         <!--Grid column-->
-        <div class="col-3">
-            @if (Model.IsSaved)
-            {
-                <p>guardado</p>
-            }
-            else
-            {
-                <a class="btn btn-light" id="btn-saved" asp-page="./SavetoMenu" asp-route-recipeId="@Model.Recipe.Id">Add to Menu</a>
-            }
+        <div class="col-4 offset-8">
+            <a asp-page="./List" class="btn btn-minor float-right">Back to Recipes</a>
         </div>
-        <!--Grid column-->
-        <div class="col-3">
-            <a asp-page="./List" class="btn btn-info">Back to Recipes</a>
-        </div>
-
     </div>
+
+
+
+
 </div>
