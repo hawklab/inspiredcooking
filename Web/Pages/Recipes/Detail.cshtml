@@ -42,38 +42,36 @@
     </div>
     <!--Grid row Actions-->
     <div class="row">
-        <!--Grid column Action Add to Cookbook-->
+        <!-- Add/Remove to/from Cookbook-->
         <div class="col-2">
-            @if (Model.IsSaved)
+            <!-- Add/Remove to/from Cookbook-->
+            @if (Model.CurrentMenu.Contains(Model.Recipe.Id))
             {
-                <p>guardado</p>
+                <form class="row" method="post" asp-page="./RemoveFromMenu" asp-route-recipeId="@Model.Recipe.Id">
+                    <button class="btn">
+                        <i class="bi-bookmark-fill" style="color: forestgreen"> Remove from Cookbook</i>
+                    </button>
+                </form>
             }
             else
             {
-                <a class="btn btn-light" id="btn-saved" asp-page="./SavetoMenu" asp-route-recipeId="@Model.Recipe.Id"><i class="bi-bookmark" style="color: forestgreen"></i> Add to Cookbook</a>
+                <form class="row" method="post" asp-page="./SavetoMenu" asp-route-recipeId="@Model.Recipe.Id">
+                    <button class="btn">
+                        <i class="bi-bookmark" style="color: forestgreen"> Add to Cookbook</i>
+                    </button>
+                </form>
             }
         </div>
+
+
+
         <!--Grid column Action Add to Favorites-->
         <div class="col-2">
-            @if (Model.IsSaved)
-            {
-                <p>guardado</p>
-            }
-            else
-            {
-                <a class="btn btn-light" id="" asp-page="" asp-route-recipeId=""><i class="bi-heart" style="color: forestgreen"></i> Add to Favorites</a>
-            }
+            <p>Add To Favorites</p>
         </div>
         <!--Grid column Action Add to Cookbook-->
         <div class="col-2">
-            @if (Model.IsSaved)
-            {
-                <p>guardado</p>
-            }
-            else
-            {
-                <a class="btn btn-light" id="" asp-page="" asp-route-recipeId="@Model.Recipe.Id"><i class="bi-share" style="color: forestgreen"></i> Share</a>
-            }
+            <p>Share</p>
         </div>
     </div>
 
@@ -105,6 +103,8 @@
         </div>
     </div>
 
+
+    
 
 
 

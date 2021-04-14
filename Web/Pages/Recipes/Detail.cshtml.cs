@@ -21,7 +21,9 @@ namespace InspiredCooking.Pages.Recipes
 
         public Recipe Recipe { get; set; }
 
-        public bool IsSaved { get; set; }
+        //public bool IsSaved { get; set; }
+
+        public List<int> CurrentMenu { get; set; }
 
         public DetailModel(IRecipeData recipeData)
         {
@@ -35,12 +37,21 @@ namespace InspiredCooking.Pages.Recipes
                 return RedirectToPage("./NotFound");
             }
 
-            var savedRecipe = HttpContext.Session.GetObjectFromJson<int[]>("CurrentMenu");
 
-            if (savedRecipe != null)
+            // Current Menu for Cookbook 
+            CurrentMenu = HttpContext.Session.GetObjectFromJson<List<int>>("CurrentMenu");
+            if (CurrentMenu == null)
             {
-                this.IsSaved = savedRecipe.Contains(recipeId);
+                CurrentMenu = new List<int>();
             }
+
+            // saved recipes
+            //var savedRecipe = HttpContext.Session.GetObjectFromJson<int[]>("CurrentMenu");
+
+            //if (savedRecipe != null)
+            //{
+            //    this.IsSaved = savedRecipe.Contains(recipeId);
+            //}
 
             // viewed recipes
             var viewedRecipes = HttpContext.Session.GetObjectFromJson<List<int>>("ViewedRecipes");
