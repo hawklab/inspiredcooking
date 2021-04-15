@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using InspiredCooking.Core;
 using InspiredCooking.Data;
@@ -7,14 +10,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InspiredCooking.Web.Pages.Recipes
 {
-    public class AddToFavoritesModel : PageModel
+    public class RemoveFromFavoritesModel : PageModel
     {
         private readonly IRecipeData recipeData;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IFavoriteRecipeData favoriteRecipeData;
 
-        public AddToFavoritesModel(IRecipeData recipeData,
-                                   UserManager<ApplicationUser> userManager, 
+        public RemoveFromFavoritesModel(IRecipeData recipeData,
+                                   UserManager<ApplicationUser> userManager,
                                    IFavoriteRecipeData favoriteRecipeData)
         {
             this.recipeData = recipeData;
@@ -27,9 +30,9 @@ namespace InspiredCooking.Web.Pages.Recipes
             var recipe = recipeData.GetById(recipeId);
             var user = await userManager.GetUserAsync(User);
 
-            favoriteRecipeData.AddToFavorites(recipe, user);
+            favoriteRecipeData.RemoveFromFavorites(recipe, user);
 
-           return Redirect(Request.Headers["Referer"].ToString());
+            return Redirect(Request.Headers["Referer"].ToString());
         }
     }
- }
+}

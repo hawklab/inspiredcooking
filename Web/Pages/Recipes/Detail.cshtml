@@ -44,7 +44,6 @@
     <div class="row">
         <!-- Add/Remove to/from Cookbook-->
         <div class="col-2">
-            <!-- Add/Remove to/from Cookbook-->
             @if (Model.CurrentMenu.Contains(Model.Recipe.Id))
             {
                 <form class="row" method="post" asp-page="./RemoveFromMenu" asp-route-recipeId="@Model.Recipe.Id">
@@ -62,14 +61,32 @@
                 </form>
             }
         </div>
-
-
-
-        <!--Grid column Action Add to Favorites-->
+        <!-- Add to Favorites-->
         <div class="col-2">
-            <p>Add To Favorites</p>
+            @if (Model.CurrentUserId != Model.Recipe.UserId && Model.CurrentUserId != null)
+            {
+                @if (!Model.IsFavorited)
+                {
+                <form class="row" method="post" asp-page="./AddToFavorites" asp-route-recipeId="@Model.Recipe.Id">
+                    <button class="btn">
+                        <i class="bi-suit-heart" style="color: forestgreen"> Add to Favorites</i>
+                    </button>
+                </form>
+                }
+                else
+                {
+                    <form class="row" method="post" asp-page="./RemoveFromFavorites" asp-route-recipeId="@Model.Recipe.Id">
+                        <button class="btn">
+                            <i class="bi-suit-heart-fill" style="color: forestgreen"> Remove from Favorites</i>
+                        </button>
+                    </form>
+                }
+            }
         </div>
-        <!--Grid column Action Add to Cookbook-->
+
+        
+
+        <!--Share Recipe-->
         <div class="col-2">
             <p>Share</p>
         </div>

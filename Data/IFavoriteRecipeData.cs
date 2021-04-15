@@ -4,7 +4,10 @@ namespace InspiredCooking.Data
 {
     public interface IFavoriteRecipeData
     {
-        bool AddToFavorites(Recipe recipe, ApplicationUser user);
+        void AddToFavorites(Recipe recipe, ApplicationUser user);
+        bool RemoveFromFavorites(Recipe recipe, ApplicationUser user);
+
+        bool IsFavorited (Recipe recipe, ApplicationUser user);
     }
 }
 

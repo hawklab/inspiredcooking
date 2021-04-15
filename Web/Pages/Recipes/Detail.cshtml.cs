@@ -1,59 +1,65 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using InspiredCooking.Core;
 using InspiredCooking.Data;
 using Microsoft.AspNetCore.Http;
 using InspiredCooking.Web.Helpers;
+using Microsoft.AspNetCore.Identity;
 
 namespace InspiredCooking.Pages.Recipes
 {
     public class DetailModel : PageModel
     {
         private readonly IRecipeData recipeData;
-
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly IFavoriteRecipeData favoriteRecipeData;
 
         [TempData]
         public string Message { get; set; }
 
         public Recipe Recipe { get; set; }
 
-        //public bool IsSaved { get; set; }
-
         public List<int> CurrentMenu { get; set; }
 
-        public DetailModel(IRecipeData recipeData)
+        public string CurrentUserId { get; set; }
+
+        public bool IsFavorited { get; set; }
+        
+
+        public DetailModel(IRecipeData recipeData,
+                           UserManager<ApplicationUser> userManager,
+                           IFavoriteRecipeData favoriteRecipeData)
         {
             this.recipeData = recipeData;
+            this.userManager = userManager;
+            this.favoriteRecipeData = favoriteRecipeData;
         }
-        public IActionResult OnGet(int recipeId)
+        public async System.Threading.Tasks.Task<IActionResult> OnGetAsync(int recipeId)
         {
+            // Get the recipe
             Recipe = recipeData.GetById(recipeId);
             if (Recipe == null)
             {
                 return RedirectToPage("./NotFound");
             }
 
-
-            // Current Menu for Cookbook 
+            // Get Current Menu for Cookbook 
             CurrentMenu = HttpContext.Session.GetObjectFromJson<List<int>>("CurrentMenu");
             if (CurrentMenu == null)
             {
                 CurrentMenu = new List<int>();
             }
 
-            // saved recipes
-            //var savedRecipe = HttpContext.Session.GetObjectFromJson<int[]>("CurrentMenu");
+            // Get Current User Id
+            CurrentUserId = userManager.GetUserId(User);
+            var user = await userManager.GetUserAsync(User);
 
-            //if (savedRecipe != null)
-            //{
-            //    this.IsSaved = savedRecipe.Contains(recipeId);
-            //}
+            // Get favorites status
+            IsFavorited = favoriteRecipeData.IsFavorited(Recipe, user);
 
-            // viewed recipes
+
+            // Get Viewed Recipes
             var viewedRecipes = HttpContext.Session.GetObjectFromJson<List<int>>("ViewedRecipes");
 
             if (viewedRecipes == null)
