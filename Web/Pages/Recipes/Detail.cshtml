@@ -1,5 +1,6 @@
 @page "/recipes/{recipeId:int}"
 @model InspiredCooking.Pages.Recipes.DetailModel
+@using Microsoft.AspNetCore.Http.Extensions
 @{
     ViewData["Title"] = "Recipe Details";
 }
@@ -67,11 +68,11 @@
             {
                 @if (!Model.IsFavorited)
                 {
-                <form class="row" method="post" asp-page="./AddToFavorites" asp-route-recipeId="@Model.Recipe.Id">
-                    <button class="btn">
-                        <i class="bi-suit-heart" style="color: forestgreen"> Add to Favorites</i>
-                    </button>
-                </form>
+                    <form class="row" method="post" asp-page="./AddToFavorites" asp-route-recipeId="@Model.Recipe.Id">
+                        <button class="btn">
+                            <i class="bi-suit-heart" style="color: forestgreen"> Add to Favorites</i>
+                        </button>
+                    </form>
                 }
                 else
                 {
@@ -83,15 +84,34 @@
                 }
             }
         </div>
-
-        
-
         <!--Share Recipe-->
         <div class="col-2">
-            <p>Share</p>
+            <!-- Modal Trigger -->
+            <button class="btn" data-toggle="modal" data-target="#shareModal">
+            <i class="bi-share" style="color: forestgreen"> Share</i>
+            </button>
+        </div>
+        <!-- Modal Structure -->
+        <div id="shareModal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Share Recipe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" name="myvalue" id="myvalue" value="@Model.Request.GetEncodedUrl()" readonly />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" onclick="copyToClipboard()">Copy</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
     <!--Grid row-->
     <div class="row">
         <!--Grid column Recipe Ingredients-->
@@ -110,8 +130,6 @@
             }
         </div>
     </div>
-
-
     <!--Grid row -->
     <div class="row">
         <!--Grid column-->
@@ -119,10 +137,14 @@
             <a asp-page="./List" class="btn btn-minor float-right">Back to Recipes</a>
         </div>
     </div>
-
-
-    
-
-
-
 </div>
+
+@section scripts{
+    <script>
+        function copyToClipboard() {
+            var textBox = document.getElementById("myvalue");
+            textBox.select();
+            document.execCommand("copy");
+        }
+    </script>
+}
