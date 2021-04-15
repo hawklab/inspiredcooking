@@ -1,12 +1,14 @@
 using System.Threading.Tasks;
 using InspiredCooking.Core;
 using InspiredCooking.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InspiredCooking.Web.Pages.Recipes
 {
+    [Authorize]
     public class AddToFavoritesModel : PageModel
     {
         private readonly IRecipeData recipeData;

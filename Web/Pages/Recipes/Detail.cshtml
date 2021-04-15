@@ -63,7 +63,7 @@
         </div>
         <!-- Add to Favorites-->
         <div class="col-2">
-            @if (Model.CurrentUserId != Model.Recipe.UserId && Model.CurrentUserId != null)
+            @if (Model.CurrentUserId != Model.Recipe.UserId)
             {
                 @if (!Model.IsFavorited)
                 {
