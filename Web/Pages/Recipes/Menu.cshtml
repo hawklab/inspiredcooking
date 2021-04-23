@@ -7,18 +7,17 @@
 <div class="container">
     <!--Grid row Menu Title-->
     <div class="row">
-        <!--Grid column-->
         <div class="col-12">
-            <h1 class="display-4 text-capitalize col-12">Your Menu</h1>
+            <h3>Your Cookbook</h3>
         </div>
     </div>
     <!--Grid row Menu List-->
     <div class="row">
         @foreach (var recipe in Model.Recipes)
         {
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-2 col-md-4 col-sm-6">
                 <div class="card">
-                    <img class="card-img-top" src="~/images/food.jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="~/images/@recipe.ImageId" alt="Card image cap" />
                     <div class="card-body">
                         <p><i class="bi-bag-check-fill"></i><strong> Recipe:</strong> @recipe.Name</p>
                         <p><i class="bi-geo"></i><strong> Cuisine:</strong> @recipe.Cuisine Cuisine</p>
@@ -30,8 +29,9 @@
     <!--Grid row Menu Ingredients-->
     <div class="row">
         <!--Grid column-->
-        <div class="col-md-12 col-sm-12">
-            <h1 class="display-5 text-capitalize col-12">And this are the ingredients you will need:</h1>
+        <div class="col-12">
+            <h3>And this are the ingredients you will need:</h3>
+            <p>The ingredientes for all your recipes in your Cookbook.</p>
         </div>
         <div class="row">
             @foreach (var recipe in Model.Recipes)
