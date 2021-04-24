@@ -33,6 +33,7 @@ namespace InspiredCooking.Core
         public CuisineType Cuisine { get; set; }
 
         public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+        public List<Step> Steps { get; set; } = new List<Step>();
 
         public ApplicationUser User { get; set; }
 
