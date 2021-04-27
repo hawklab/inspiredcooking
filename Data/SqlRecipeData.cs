@@ -38,6 +38,7 @@ namespace InspiredCooking.Data
         {
             return db.Recipes.Where(r => r.Id == id)
                              .Include(r => r.Ingredients)
+                             .Include(r => r.Steps)
                              .AsNoTracking()
                              .First();
         }

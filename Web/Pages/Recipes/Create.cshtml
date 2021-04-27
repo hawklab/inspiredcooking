@@ -90,6 +90,9 @@
                 <!--Ingredients-->
                 <component type="typeof(InspiredCooking.Web.Components.IngredientEditField)" param-Ingredients="@Model.Recipe.Ingredients" render-mode="Server" />
 
+                <!--Steps-->
+                <component type="typeof(InspiredCooking.Web.Components.StepEditField)" param-Steps="@Model.Recipe.Steps" render-mode="Server" />
+
                 <!--Grid row Recipe Saving Fields-->
                 <div class="row">
                     <!--Grid column-->
@@ -101,7 +104,6 @@
         </div>
     </div>
     
-
 </div>
 
 @section Scripts

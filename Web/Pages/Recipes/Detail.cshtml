@@ -130,6 +130,37 @@
             }
         </div>
     </div>
+    <!--Grid row-->
+    <div class="row">
+        <!--Grid column Recipe Steps-->
+        <div class="col-12">
+            <p class="font-weight-bold">Steps:</p>
+
+            @foreach (var step in Model.Recipe.Steps)
+            {
+                <ul>
+                    <li>
+                        @step.Title
+                        @step.Content
+                    </li>
+                </ul>
+            }
+        </div>
+    </div>
+    <!-- Grid row -->
+    <div class="row">
+        <!-- Grid column Edit/Delete Recipe-->
+        @if (Model.CurrentUserId == Model.Recipe.UserId)
+        {
+            <a class="btn col-4" asp-page="./Edit" asp-route-recipeId="@Model.Recipe.Id">
+                <i class="bi-pencil"></i>
+            </a>
+            <a class="btn col-4" asp-page="./Delete" asp-route-recipeId="@Model.Recipe.Id">
+                <i class="bi-trash"></i>
+            </a>
+        }
+    </div>
+    
     <!--Grid row -->
     <div class="row">
         <!--Grid column-->
