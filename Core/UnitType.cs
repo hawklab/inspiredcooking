@@ -4,10 +4,13 @@ namespace InspiredCooking.Core
     {
         public enum UnitType
         {
-            none,
+            unit,
+            cup,
+            teaspoon,
+            tablespoon,
             grams,
             ml,
-            pinch
+            pinch,
         }
     }
 }
