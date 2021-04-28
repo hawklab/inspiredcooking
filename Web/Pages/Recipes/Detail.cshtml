@@ -17,11 +17,26 @@
         </div>
     </div>
 
-    <!--Grid row Recipe Name-->
+    <!--Grid row-->
     <div class="row">
-        <h1 class="display-4 text-capitalize col-12">@Model.Recipe.Name</h1>
+        <!-- Grid column Recipe Name-->
+        <div class="col">
+            <h1 class="display-4 text-capitalize col-12">@Model.Recipe.Name</h1>
+        </div>
+        <!-- Grid column Recipe Edit/Delete-->
+        <div class="col edit-delete">
+            <!-- Grid column Edit/Delete Recipe-->
+            @if (Model.CurrentUserId == Model.Recipe.UserId)
+            {
+                <a class="btn" asp-page="./Edit" asp-route-recipeId="@Model.Recipe.Id">
+                    <i class="bi-pencil" style="color: forestgreen" title="Edit"></i>
+                </a>
+                <a class="btn" asp-page="./Delete" asp-route-recipeId="@Model.Recipe.Id">
+                    <i class="bi-trash" style="color: forestgreen" title="Delete" ></i>
+                </a>
+            }
+        </div>
     </div>
-
     <!--Grid row Recipe Information-->
     <div class="row">
         <!--Grid column Image-->
@@ -31,7 +46,7 @@
 
         <!--Grid column Content-->
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <div><p>@Model.Recipe.Description</p></div>
+            <div><p class="detail-description">@Model.Recipe.Description</p="></div>
             <div>
                 <p><i class="bi-clock"></i><strong> Preptime:</strong> @Model.Recipe.PrepTime</p>
                 <p><i class="bi-clock"></i><strong> Cooktime:</strong> @Model.Recipe.CookTime</p>
@@ -43,6 +58,33 @@
     </div>
     <!--Grid row Actions-->
     <div class="row">
+        <!--Share Recipe-->
+        <div class="col-2">
+            <!-- Modal Trigger -->
+            <button class="btn" data-toggle="modal" data-target="#shareModal">
+                <i class="bi-share" style="color: forestgreen"> Share</i>
+            </button>
+        </div>
+        <!-- Modal Structure -->
+        <div id="shareModal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Share Recipe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" name="myvalue" id="myvalue" value="@Model.Request.GetEncodedUrl()" readonly />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" onclick="copyToClipboard()">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Add/Remove to/from Cookbook-->
         <div class="col-2">
             @if (Model.CurrentMenu.Contains(Model.Recipe.Id))
@@ -84,33 +126,6 @@
                 }
             }
         </div>
-        <!--Share Recipe-->
-        <div class="col-2">
-            <!-- Modal Trigger -->
-            <button class="btn" data-toggle="modal" data-target="#shareModal">
-                <i class="bi-share" style="color: forestgreen"> Share</i>
-            </button>
-        </div>
-        <!-- Modal Structure -->
-        <div id="shareModal" class="modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Share Recipe</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="text" class="form-control" name="myvalue" id="myvalue" value="@Model.Request.GetEncodedUrl()" readonly />
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button class="btn btn-primary" onclick="copyToClipboard()">Copy</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <!--Grid row-->
     <div class="row">
@@ -138,29 +153,11 @@
 
             @foreach (var step in Model.Recipe.Steps)
             {
-                <ul>
-                    <li>
-                        @step.Title
-                        @step.Content
-                    </li>
-                </ul>
+                <h5>@step.Title</h5>
+                <p>@step.Content</p>
             }
         </div>
     </div>
-    <!-- Grid row -->
-    <div class="row">
-        <!-- Grid column Edit/Delete Recipe-->
-        @if (Model.CurrentUserId == Model.Recipe.UserId)
-        {
-            <a class="btn col-4" asp-page="./Edit" asp-route-recipeId="@Model.Recipe.Id">
-                <i class="bi-pencil"></i>
-            </a>
-            <a class="btn col-4" asp-page="./Delete" asp-route-recipeId="@Model.Recipe.Id">
-                <i class="bi-trash"></i>
-            </a>
-        }
-    </div>
-    
     <!--Grid row -->
     <div class="row">
         <!--Grid column-->

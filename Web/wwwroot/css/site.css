@@ -59,14 +59,6 @@ p {
     margin-bottom: 4px;  
 }
 
-/*
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-*/
-
 .btn-main {
     color: #fff;
     background-color: #008601;
@@ -91,23 +83,6 @@ p {
     border-color: #191919;
 }
 
-/*
-btn-search {
-    color: #fff;
-    background-color: #dc3545;
-    border-color: #1861ac;
-    }
-
-*/
-/* #btn-add {
-    margin-top: 10px;
-    text-align: center;
-    display: block;
-}*/
-/*
-    i {
-    color: #008601;
-}*/
 .viewed-recipes {
     margin-bottom: 40px;
 }
@@ -116,6 +91,15 @@ btn-search {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+/*  Details Page ---------------- */
+.detail-description{
+    margin-bottom: 40px;
+}
+
+.edit-delete {
+    margin: auto;
 }
 
 /* Sticky footer styles
