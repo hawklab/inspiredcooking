@@ -25,7 +25,7 @@ namespace InspiredCooking.Core
         public int Servings { get; set; }
 
         [Required]
-        public int Difficulty { get; set; }
+        public DifficultyType Difficulty { get; set; }
 
         [Required]
         public CuisineType Cuisine { get; set; }
