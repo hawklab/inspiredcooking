@@ -70,6 +70,8 @@ namespace InspiredCooking.Data
         {
             var entity = db.Recipes.Attach(updatedRecipe);
             entity.State = EntityState.Modified;
+            // Prevent user Id from changing
+            entity.Property(x => x.UserId).IsModified = false;
             return updatedRecipe;
         }
 
