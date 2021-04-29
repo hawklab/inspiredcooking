@@ -13,7 +13,6 @@ namespace InspiredCooking.Core
 
         [Required]
         public string Description { get; set; }
-        public string Photo { get; set; }
 
         [Required]
         public string PrepTime { get; set; }
