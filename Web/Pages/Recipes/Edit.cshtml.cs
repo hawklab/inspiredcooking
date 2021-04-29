@@ -22,6 +22,7 @@ namespace InspiredCooking.Pages.Recipes
         [BindProperty]
         public Recipe Recipe { get; set; }
 
+        [BindProperty]
         public IFormFile NewImage { get; set; }
         public IEnumerable<SelectListItem> Cuisines { get; set; }
         public IEnumerable<SelectListItem> Difficulty { get; set; }
