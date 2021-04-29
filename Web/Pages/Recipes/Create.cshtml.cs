@@ -25,6 +25,7 @@ namespace InspiredCooking.Pages.Recipes
         [BindProperty]
         public IFormFile NewImage { get; set; }
         public IEnumerable<SelectListItem> Cuisines { get; set; }
+        public IEnumerable<SelectListItem> Difficulty { get; set; }
         public CreateModel(IRecipeData recipeData, IHtmlHelper htmlHelper, 
                            IIngredientData ingredientData, 
                            UserManager<ApplicationUser> userManager,
@@ -39,6 +40,7 @@ namespace InspiredCooking.Pages.Recipes
         public IActionResult OnGet(int? recipeId)
         {
             Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+            Difficulty = htmlHelper.GetEnumSelectList<DifficultyType>();
             Recipe = new Recipe();
             return Page();
         }

@@ -21,6 +21,7 @@ namespace InspiredCooking.Pages.Recipes
         [BindProperty]
         public Recipe Recipe { get; set; }
         public IEnumerable<SelectListItem> Cuisines { get; set; }
+        public IEnumerable<SelectListItem> Difficulty { get; set; }
         public EditModel(IRecipeData recipeData,
                          IHtmlHelper htmlHelper, IIngredientData ingredientData, UserManager<ApplicationUser> userManager)
         {
@@ -40,6 +41,7 @@ namespace InspiredCooking.Pages.Recipes
             if (currentUserId == authorId)
             {
                 Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+                Difficulty = htmlHelper.GetEnumSelectList<DifficultyType>();
                 if (Recipe == null)
                 {
                     return RedirectToPage("./NotFound");
