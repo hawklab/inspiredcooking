@@ -26,7 +26,7 @@
         <!-- Grid column Recipe Edit/Delete-->
         <div class="col edit-delete">
             <!-- Grid column Edit/Delete Recipe-->
-            @if (Model.CurrentUserId == Model.Recipe.UserId)
+            @if (Model.CurrentUserId == Model.Recipe.UserId && Model.CurrentUserId != null)
             {
                 <a class="btn" asp-page="./Edit" asp-route-recipeId="@Model.Recipe.Id">
                     <i class="bi-pencil" style="color: forestgreen" title="Edit"></i>

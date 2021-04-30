@@ -3,7 +3,7 @@
 <div class="container">
     <!-- Steps Title-->
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 recipe-inputs">
             <p>Steps</p>
         </div>
     </div>
@@ -11,6 +11,12 @@
     <div class="form-row">
         <label asp-for="Recipe.Steps"></label>
         <span class="text-danger" asp-validation-for="Recipe.Steps"></span>
+        @if (Steps.Count == 0)
+        {
+            <div class="col-12 alert alert-secondary item-empty-msg" role="alert">
+                <p> You'll need to know the steps. Add Step to start!</p>
+            </div>
+        }
         @for (var i = 0; i < Steps.Count; i++)
         {
             var step = Steps[i];
@@ -29,11 +35,12 @@
             </div>
         }
     </div>
+    <!--Add new Step-->
+    <div class="row col-12">
+        <button class="btn btn-minor" @onclick="AddStepField" @onclick:preventDefault="true">Add Step</button>
+    </div>
 </div>
-<!--Add new Step-->
-<div class="row col-12">
-    <button class="btn btn-minor" @onclick="AddStepField" @onclick:preventDefault="true">Add Step</button>
-</div>
+
 
 
 @code {

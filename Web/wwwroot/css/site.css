@@ -107,10 +107,19 @@ p {
     
 }
 
+/*  Create Page ---------------- */
+.image-input {
+    font-family: 'Roboto', sans-serif;
+    height: 45px;
+}
+
+.item-empty-msg {
+    text-align: center;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
