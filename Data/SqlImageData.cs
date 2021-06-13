@@ -30,7 +30,7 @@ namespace InspiredCooking.Data
             string containerName = "images";
 
             // Create the container and return a container client object
-            BlobContainerClient containerClient = await blobServiceClient.CreateBlobContainerAsync(containerName);
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
 
             // Create a local file in the ./data/ directory for uploading and downloading
             string fileName = Guid.NewGuid().ToString() + newImageFile.FileName;
