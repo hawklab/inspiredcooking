@@ -10,7 +10,8 @@ namespace InspiredCooking.Core
             Italian,
             Indian,
             Mexican,
-            Thai
+            Thai, 
+            Keto
         }
     }
 }
