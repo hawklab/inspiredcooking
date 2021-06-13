@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -40,5 +41,7 @@ namespace InspiredCooking.Core
 
         public Image Image { get; set; }
         public int? ImageId { get; set; }
+
+        public Uri ImageUrl { get; set; }
     }
 }

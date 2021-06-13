@@ -7,6 +7,7 @@ using InspiredCooking.Data;
 using static InspiredCooking.Core.Recipe;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace InspiredCooking.Pages.Recipes
 {
@@ -44,7 +45,7 @@ namespace InspiredCooking.Pages.Recipes
             Recipe = new Recipe();
             return Page();
         }
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             var userId = userManager.GetUserId(User);
 
@@ -56,8 +57,8 @@ namespace InspiredCooking.Pages.Recipes
 
             if (NewImage != null)
             {
-                var image = imageData.UploadImage(NewImage);
-                Recipe.ImageId = image.Id;
+                var image = await imageData.UploadImageAsync(NewImage);
+                Recipe.ImageUrl = image;
             }
 
             Recipe.UserId = userId;
