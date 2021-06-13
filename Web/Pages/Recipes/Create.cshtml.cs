@@ -52,6 +52,7 @@ namespace InspiredCooking.Pages.Recipes
             if (!ModelState.IsValid)
             {
                 Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+                Difficulty = htmlHelper.GetEnumSelectList<DifficultyType>();
                 return Page();    
             }
 
