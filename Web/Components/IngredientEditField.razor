@@ -17,18 +17,14 @@
         <span class="text-danger" asp-validation-for="Recipe.Ingredients"></span>
         @if (Ingredients.Count == 0)
         {
-           <div class="col-12 alert alert-secondary item-empty-msg" role="alert">
-               <p> Your Ingredients List is empty. Not for much longer!</p>
-           </div>
+            <div class="col-12 alert alert-secondary item-empty-msg" role="alert">
+                <p> Your Ingredients List is empty. Not for much longer!</p>
+            </div>
         }
         @for (var i = 0; i < Ingredients.Count; i++)
         {
             var ingredient = Ingredients[i];
             <input type="hidden" name="Recipe.Ingredients[@i].Id" value="@ingredient.Id">
-            <!-- Name-->
-            <div class="form-group col-md-6">
-                <input class="form-control" type="text" placeholder="Ingredient Name" name="Recipe.Ingredients[@i].Name" value="@ingredient.Name">
-            </div>
             <!--Amount-->
             <div class="form-group col-md-2">
                 <input class="form-control" type="text" name="Recipe.Ingredients[@i].Amount" value="@ingredient.Amount">
@@ -41,6 +37,10 @@
                         <option value="@unit">@unit</option>
                     }
                 </select>
+            </div>
+            <!-- Name-->
+            <div class="form-group col-md-6">
+                <input class="form-control" type="text" placeholder="Ingredient Name" name="Recipe.Ingredients[@i].Name" value="@ingredient.Name">
             </div>
             <div class="form-group col-md-1">
                 <!-- Delete Ingredient-->
