@@ -45,14 +45,14 @@ namespace InspiredCooking.Pages.Recipes
             }
             CurrentMenu.Count();
 
-            //Listing Last Recipes Seen
+            //Listing Last five Recipes Seen
             var ViewedRecipesIds = HttpContext.Session.GetObjectFromJson<List<int>>("ViewedRecipesKey");
             if (ViewedRecipesIds == null)
             {
                 ViewedRecipesIds = new List<int>();
             }
-
-            ViewedRecipes = recipeData.GetRecipesByIds(ViewedRecipesIds);
+        
+            ViewedRecipes = recipeData.GetRecipesByIds(ViewedRecipesIds.TakeLast(5));
         }
     }
 }

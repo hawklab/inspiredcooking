@@ -60,7 +60,7 @@ namespace InspiredCooking.Pages.Recipes
 
 
             // Get Viewed Recipes
-            var viewedRecipes = HttpContext.Session.GetObjectFromJson<List<int>>("ViewedRecipes");
+            var viewedRecipes = HttpContext.Session.GetObjectFromJson<List<int>>("ViewedRecipesKey");
 
             if (viewedRecipes == null)
             {
