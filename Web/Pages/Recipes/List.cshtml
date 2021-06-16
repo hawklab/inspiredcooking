@@ -33,7 +33,7 @@
                     <img class="card-img-top" src="@recipe.ImageUrl" alt="Card image cap" />
                     <div class="card-body">
                         <!--Recipe Info-->
-                        <p class="card-text"><i class="bi-clock"></i><small class="text-muted"> @recipe.PrepTime </small></p>
+                        <p class="card-text"><i class="bi-clock"></i><small class="text-muted"> @(recipe.PrepTimeinMinutes + recipe.CookTimeinMinutes) min.</small></p>
                         <h3 class="card-title text-capitalize" id="recipe-title">@recipe.Name</h3>
                         <p class="card-text text-muted description-text" id="recipe-descrip">@recipe.Description</p>
 

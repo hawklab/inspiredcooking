@@ -15,11 +15,14 @@ namespace InspiredCooking.Core
         [Required]
         public string Description { get; set; }
 
-        [Required]
+        
         public string PrepTime { get; set; }
 
-        [Required]
         public string CookTime { get; set; }
+
+        public int PrepTimeinMinutes { get; set; }
+
+        public int CookTimeinMinutes { get; set; }
 
         [Required]
         public int Servings { get; set; }
