@@ -16,7 +16,7 @@
     <div class="row">
         <!--Grid column-->
         <div class="col-12">
-            <form method="post"  enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 <!--Name-->
                 <div class="for-group row">
                     <input type="hidden" asp-for="Recipe.Id">
@@ -36,21 +36,11 @@
                     </div>
                 </div>
                 <!--Preptime-->
-                <div class="for-group row">
-                    <label asp-for="Recipe.PrepTime" class="col-sm-2 col-form-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="Recipe.PrepTime" class="form-control" />
-                        <span class="text-danger" asp-validation-for="Recipe.PrepTime"></span>
-                    </div>
-                </div>
+                <component type="typeof(InspiredCooking.Web.Components.TimeEditField)" param-TimeInMinutes="@Model.Recipe.PrepTimeinMinutes" param-PropertyName="@("Recipe.PrepTimeinMinutes")" render-mode="Server" />
+
                 <!--Cooktime-->
-                <div class="for-group row">
-                    <label asp-for="Recipe.CookTime" class="col-sm-2 col-form-label"></label>
-                    <div class="col-sm-10">
-                        <input asp-for="Recipe.CookTime" class="form-control" />
-                        <span class="text-danger" asp-validation-for="Recipe.CookTime"></span>
-                    </div>
-                </div>
+                <component type="typeof(InspiredCooking.Web.Components.TimeEditField)" param-TimeInMinutes="@Model.Recipe.CookTimeinMinutes" param-PropertyName="@("Recipe.CookTimeinMinutes")" render-mode="Server" />
+                
                 <!--Servings-->
                 <div class="for-group row">
                     <label asp-for="Recipe.Servings" class="col-sm-2 col-form-label"></label>
@@ -85,7 +75,7 @@
                         <p>Image</p>
                         <div class="custom-file">
                             <input asp-for="NewImage" type="file" class="form-control image-input">
-                            
+
                             <span class="text-danger" asp-validation-for="NewImage"></span>
                         </div>
                     </div>
