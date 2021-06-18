@@ -36,11 +36,23 @@
                     </div>
                 </div>
                 <!--Preptime-->
-                <component type="typeof(InspiredCooking.Web.Components.TimeEditField)" param-TimeInMinutes="@Model.Recipe.PrepTimeinMinutes" param-PropertyName="@("Recipe.PrepTimeinMinutes")" render-mode="Server" />
-
+                <div class="for-group row">
+                    <div class="col">
+                        <p>Preptime</p>
+                    </div>
+                    <div class="col">
+                        <component type="typeof(InspiredCooking.Web.Components.TimeEditField)" param-TimeInMinutes="@Model.Recipe.PrepTimeinMinutes" param-PropertyName="@("Recipe.PrepTimeinMinutes")" render-mode="Server" />
+                    </div>
+                </div>
                 <!--Cooktime-->
-                <component type="typeof(InspiredCooking.Web.Components.TimeEditField)" param-TimeInMinutes="@Model.Recipe.CookTimeinMinutes" param-PropertyName="@("Recipe.CookTimeinMinutes")" render-mode="Server" />
-                
+                <div class="for-group row">
+                    <div class="col">
+                        <p>Cooktime</p>
+                    </div>
+                    <div class="col">
+                        <component type="typeof(InspiredCooking.Web.Components.TimeEditField)" param-TimeInMinutes="@Model.Recipe.CookTimeinMinutes" param-PropertyName="@("Recipe.CookTimeinMinutes")" render-mode="Server" />
+                    </div>
+                </div>
                 <!--Servings-->
                 <div class="for-group row">
                     <label asp-for="Recipe.Servings" class="col-sm-2 col-form-label"></label>
