@@ -57,6 +57,15 @@ namespace InspiredCooking
                 options.Cookie.IsEssential = true;
             });
 
+            // Remove character requirements from passwords
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            });
+
             // for aspnetcore3.0+
             services.AddControllers();
         }
