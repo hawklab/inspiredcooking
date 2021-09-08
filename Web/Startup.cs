@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,7 +53,8 @@ namespace InspiredCooking
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                // We want to keep the user session active for as long as possible
+                options.IdleTimeout = Timeout.InfiniteTimeSpan;
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
