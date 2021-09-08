@@ -1,4 +1,6 @@
 dotnet restore
 pushd Web
-node install
+npm install
 popd
+
+dotnet ef database update --project Data -s Web
