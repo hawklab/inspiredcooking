@@ -58,6 +58,7 @@ namespace InspiredCooking
             });
 
             // Remove character requirements from passwords
+            // See: https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-configuration?view=aspnetcore-5.0#password
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
