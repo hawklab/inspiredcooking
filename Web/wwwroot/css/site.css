@@ -42,6 +42,29 @@ p {
     width: 75px;
 }
 
+#landing-row {
+    padding-top: 80px;
+    margin-bottom: 40px;
+}
+#landing-text {
+    padding-right: 60px;
+    padding-top: 60px;
+    font-family: 'Nunito', sans-serif;
+}
+#landing-image {
+   
+}
+
+.landing-btn {
+    margin-top: 40px;
+    margin-right: 10px;
+}
+
+.recipe-list-description {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
 #recipe-title {
     font-family: 'Nunito', sans-serif;
 }

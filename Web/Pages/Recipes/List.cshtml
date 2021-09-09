@@ -4,6 +4,26 @@
     ViewData["Title"] = "Recipes";
 }
 <div class="container">
+
+    <!--Landing -->
+    <div class="row" id="landing-row">
+        <!--Call Col-->
+        <div class="col" id="landing-text">
+            <div class="row">
+                <h1>Don't think about your menu everyday.</h1>
+                <h4>Just create your cookbook and <strong>enjoy cooking.</strong></h4>
+            </div>
+            <div class="row">
+                <a asp-page="" class="btn btn-main landing-btn">Get started</a>
+                <a asp-page="" class="btn btn-main landing-btn">Explore Recipes</a>
+            </div>
+        </div>
+        <!--Image Col-->
+        <div class="col" id="landing-image">
+            <img class="img-fluid" src="~/images/home-image.png" alt="Card image cap" />
+        </div>
+    </div>
+
     <!--Search recipes-->
     <div class="row">
         <div class="col-12">
@@ -15,15 +35,10 @@
             </nav>
         </div>
     </div>
-    <!--Counter-->
-    <div class="row alert alert-light" role="alert">
-        <div class="col">
-            <p>You have <strong>@Model.CurrentMenu.Count</strong> recipes on your<a class="alert-link" asp-page=".\menu"> CookBook.</a></p>
-        </div>
-    </div>
+
     <!--Recipes List-->
-    <div class="row">
-        <h3>Recipes </h3>
+    <div class="row recipe-list-description">
+        <h3>Check Recipes and Create your Cookbook for the week</h3>
     </div>
     <div class="row">
         @foreach (var recipe in Model.Recipes)
@@ -87,6 +102,12 @@
                     <img class="card-img-top" src="@recipe.ImageUrl" alt="Card image cap" />
                 </div>
             }
+        </div>
+    </div>
+    <!--Counter-->
+    <div class="row alert alert-light" role="alert">
+        <div class="col">
+            <p>You have <strong>@Model.CurrentMenu.Count</strong> recipes on your<a class="alert-link" asp-page=".\menu"> CookBook.</a></p>
         </div>
     </div>
 </div>
