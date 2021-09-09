@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  app:
+    image: mcr.microsoft.com/vscode/devcontainers/universal:linux
+    volumes:
+      - ..:/workspace:cached
+      
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    network_mode: service:db
+
+    # Uncomment the next line to use a non-root user for all processes.
+    user: codespace
+
+    environment:
+      - "ConnectionStrings:RecipesDb=Server=localhost;Database=RecipesDb;User Id=SA;Password=P@ssw0rd"
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: unless-stopped
+    environment:
+      SA_PASSWORD: P@ssw0rd
+      ACCEPT_EULA: Y
