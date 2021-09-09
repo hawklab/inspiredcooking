@@ -14,8 +14,8 @@
                 <h4>Just create your cookbook and <strong>enjoy cooking.</strong></h4>
             </div>
             <div class="row">
-                <a asp-page="" class="btn btn-main landing-btn">Get started</a>
-                <a asp-page="" class="btn btn-main landing-btn">Explore Recipes</a>
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-main landing-btn">Get started</a>
+                <a asp-page="./List" asp-fragment="recipes" class="btn btn-main landing-btn">Explore Recipes</a>
             </div>
         </div>
         <!--Image Col-->
@@ -37,7 +37,7 @@
     </div>
 
     <!--Recipes List-->
-    <div class="row recipe-list-description">
+    <div class="row recipe-list-description" id="recipes">
         <h3>Check Recipes and Create your Cookbook for the week</h3>
     </div>
     <div class="row">
