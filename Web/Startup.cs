@@ -59,6 +59,16 @@ namespace InspiredCooking
                 options.Cookie.IsEssential = true;
             });
 
+            // Remove character requirements from passwords
+            // See: https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-configuration?view=aspnetcore-5.0#password
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            });
+
             // for aspnetcore3.0+
             services.AddControllers();
         }
